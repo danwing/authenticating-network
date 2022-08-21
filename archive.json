@@ -1,0 +1,167 @@
+{
+  "magic": "E!vIA5L86J2I",
+  "timestamp": "2022-08-21T01:45:33.431133+00:00",
+  "repo": "danwing/authenticating-network",
+  "labels": [
+    {
+      "name": "bug",
+      "description": "Something isn't working",
+      "color": "d73a4a"
+    },
+    {
+      "name": "documentation",
+      "description": "Improvements or additions to documentation",
+      "color": "0075ca"
+    },
+    {
+      "name": "duplicate",
+      "description": "This issue or pull request already exists",
+      "color": "cfd3d7"
+    },
+    {
+      "name": "enhancement",
+      "description": "New feature or request",
+      "color": "a2eeef"
+    },
+    {
+      "name": "help wanted",
+      "description": "Extra attention is needed",
+      "color": "008672"
+    },
+    {
+      "name": "good first issue",
+      "description": "Good for newcomers",
+      "color": "7057ff"
+    },
+    {
+      "name": "invalid",
+      "description": "This doesn't seem right",
+      "color": "e4e669"
+    },
+    {
+      "name": "question",
+      "description": "Further information is requested",
+      "color": "d876e3"
+    },
+    {
+      "name": "wontfix",
+      "description": "This will not be worked on",
+      "color": "ffffff"
+    }
+  ],
+  "issues": [
+    {
+      "number": 1,
+      "id": "I_kwDOH2YLqc5QLW3T",
+      "title": "Comments on Introduction",
+      "url": "https://github.com/danwing/authenticating-network/issues/1",
+      "state": "OPEN",
+      "author": "tireddy2",
+      "authorAssociation": "COLLABORATOR",
+      "assignees": [],
+      "labels": [],
+      "body": "Mutual authentication is not an problem in LTE and 5G networks. In 5G, three types of authentication techniques are typically used AKA, EAP-AKA\u2019, and EAP-TLS.  The UE uses a permanent key securely stored in the SIM to authenticate to the evolved packet core. \r\n\r\nThe attack in https://alter-attack.net/ says LTE is susceptible to DNS spoofing attack because of a malicious MitM relay between the UE and the eNodeB to manipulate the (encrypted) payload of user data transmissions (see page 8 in the above paper). ",
+      "createdAt": "2022-08-20T12:34:46Z",
+      "updatedAt": "2022-08-20T12:34:46Z",
+      "closedAt": null,
+      "comments": []
+    },
+    {
+      "number": 2,
+      "id": "I_kwDOH2YLqc5QLXZO",
+      "title": "Scope of the draft",
+      "url": "https://github.com/danwing/authenticating-network/issues/2",
+      "state": "OPEN",
+      "author": "tireddy2",
+      "authorAssociation": "COLLABORATOR",
+      "assignees": [],
+      "labels": [],
+      "body": "I don't think we should extend the scope of this draft to wired networks. We should confine the scope to WiFi networks using opportunistic wireless encryption or WPA*-PSK. ",
+      "createdAt": "2022-08-20T12:44:28Z",
+      "updatedAt": "2022-08-20T12:44:28Z",
+      "closedAt": null,
+      "comments": []
+    },
+    {
+      "number": 3,
+      "id": "I_kwDOH2YLqc5QLYCt",
+      "title": "Use of DDR",
+      "url": "https://github.com/danwing/authenticating-network/issues/3",
+      "state": "OPEN",
+      "author": "tireddy2",
+      "authorAssociation": "COLLABORATOR",
+      "assignees": [],
+      "labels": [],
+      "body": "DDR is useful in deployments where the local network cannot be upgraded to host a encrypted resolver and the home router cannot be upgraded to support DNR.  For instance, DDR is typically used to discover the ISP's encrypted resolver or public encrypted resolver.\r\n\r\nI don't think DDR is helpful for this draft. ",
+      "createdAt": "2022-08-20T12:58:07Z",
+      "updatedAt": "2022-08-20T12:58:07Z",
+      "closedAt": null,
+      "comments": []
+    },
+    {
+      "number": 4,
+      "id": "I_kwDOH2YLqc5QLYm-",
+      "title": "Avoiding Trust on First Use",
+      "url": "https://github.com/danwing/authenticating-network/issues/4",
+      "state": "OPEN",
+      "author": "tireddy2",
+      "authorAssociation": "COLLABORATOR",
+      "assignees": [],
+      "labels": [],
+      "body": "I don't think the privacy issues discussed in this section is applicable for public WiFi (e.g., airports, coffee shop, hotels etc).  For example, Starbucks would not have any privacy concern to reveal the company name and location in SSID.  ",
+      "createdAt": "2022-08-20T13:09:41Z",
+      "updatedAt": "2022-08-20T13:33:48Z",
+      "closedAt": null,
+      "comments": []
+    },
+    {
+      "number": 5,
+      "id": "I_kwDOH2YLqc5QLZAv",
+      "title": "Extending WiFi QR Code",
+      "url": "https://github.com/danwing/authenticating-network/issues/5",
+      "state": "OPEN",
+      "author": "tireddy2",
+      "authorAssociation": "COLLABORATOR",
+      "assignees": [],
+      "labels": [],
+      "body": "The fingerprint of the certificate could change frequently (e.g., CAs like letsencrypt issue certificates which have a lifetime of 30 days). The new field should contain the ADN or the fingerprint of the DNS server's public key.",
+      "createdAt": "2022-08-20T13:17:30Z",
+      "updatedAt": "2022-08-20T13:17:30Z",
+      "closedAt": null,
+      "comments": []
+    },
+    {
+      "number": 6,
+      "id": "I_kwDOH2YLqc5QLZmo",
+      "title": "Identifying a public DNS server",
+      "url": "https://github.com/danwing/authenticating-network/issues/6",
+      "state": "OPEN",
+      "author": "tireddy2",
+      "authorAssociation": "COLLABORATOR",
+      "assignees": [],
+      "labels": [],
+      "body": "We could a use a public proxy pre-configured on the endpoint to establish a secure connection with the discovered encrypted resolver to identify it is accessible publicly. For example, see https://datatracker.ietf.org/doc/html/draft-pauly-ohai-svcb-config-03#section-7 and https://datatracker.ietf.org/doc/html/draft-schwartz-ohai-consistency-doublecheck-02#section-3. ",
+      "createdAt": "2022-08-20T13:28:47Z",
+      "updatedAt": "2022-08-20T13:28:47Z",
+      "closedAt": null,
+      "comments": []
+    },
+    {
+      "number": 7,
+      "id": "I_kwDOH2YLqc5QLZzm",
+      "title": "Common WiFi Names",
+      "url": "https://github.com/danwing/authenticating-network/issues/7",
+      "state": "OPEN",
+      "author": "tireddy2",
+      "authorAssociation": "COLLABORATOR",
+      "assignees": [],
+      "labels": [],
+      "body": "This issue can be resolved by associating the \"SSID:BSSID\" with the ADN of the discovered network resolver. ",
+      "createdAt": "2022-08-20T13:32:49Z",
+      "updatedAt": "2022-08-20T13:32:49Z",
+      "closedAt": null,
+      "comments": []
+    }
+  ],
+  "pulls": []
+}
