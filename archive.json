@@ -1,6 +1,6 @@
 {
   "magic": "E!vIA5L86J2I",
-  "timestamp": "2022-08-21T01:45:33.431133+00:00",
+  "timestamp": "2022-08-23T01:57:04.617944+00:00",
   "repo": "danwing/authenticating-network",
   "labels": [
     {
@@ -55,15 +55,15 @@
       "id": "I_kwDOH2YLqc5QLW3T",
       "title": "Comments on Introduction",
       "url": "https://github.com/danwing/authenticating-network/issues/1",
-      "state": "OPEN",
+      "state": "CLOSED",
       "author": "tireddy2",
       "authorAssociation": "COLLABORATOR",
       "assignees": [],
       "labels": [],
       "body": "Mutual authentication is not an problem in LTE and 5G networks. In 5G, three types of authentication techniques are typically used AKA, EAP-AKA\u2019, and EAP-TLS.  The UE uses a permanent key securely stored in the SIM to authenticate to the evolved packet core. \r\n\r\nThe attack in https://alter-attack.net/ says LTE is susceptible to DNS spoofing attack because of a malicious MitM relay between the UE and the eNodeB to manipulate the (encrypted) payload of user data transmissions (see page 8 in the above paper). ",
       "createdAt": "2022-08-20T12:34:46Z",
-      "updatedAt": "2022-08-20T12:34:46Z",
-      "closedAt": null,
+      "updatedAt": "2022-08-22T11:04:49Z",
+      "closedAt": "2022-08-22T11:04:49Z",
       "comments": []
     },
     {
@@ -92,9 +92,9 @@
       "authorAssociation": "COLLABORATOR",
       "assignees": [],
       "labels": [],
-      "body": "DDR is useful in deployments where the local network cannot be upgraded to host a encrypted resolver and the home router cannot be upgraded to support DNR.  For instance, DDR is typically used to discover the ISP's encrypted resolver or public encrypted resolver.\r\n\r\nI don't think DDR is helpful for this draft. ",
+      "body": "DDR is useful in deployments where the local network cannot be upgraded to host a encrypted resolver and the home router cannot be upgraded to support DNR.  For instance, DDR is typically used to discover the ISP's encrypted resolver or public encrypted resolver. In other words, DDR scope is restricted to encrypted resolvers using public IP addresses.  \r\n\r\nIn this case, the attack surface significantly reduces. The attacker does not have visibility into any DNS traffic. I am assuming in near future CDNs, sensitive domains and endpoints will move TLS 1.3 and ECH. \r\n\r\nWhat will the attacker do just with destination IP addresses ?\r\n\r\n\r\n\r\n",
       "createdAt": "2022-08-20T12:58:07Z",
-      "updatedAt": "2022-08-20T12:58:07Z",
+      "updatedAt": "2022-08-22T11:08:16Z",
       "closedAt": null,
       "comments": []
     },
@@ -163,5 +163,32 @@
       "comments": []
     }
   ],
-  "pulls": []
+  "pulls": [
+    {
+      "number": 8,
+      "id": "PR_kwDOH2YLqc49ibcY",
+      "title": "Initial updates to the draft",
+      "url": "https://github.com/danwing/authenticating-network/pull/8",
+      "state": "OPEN",
+      "author": "tireddy2",
+      "authorAssociation": "COLLABORATOR",
+      "assignees": [],
+      "labels": [],
+      "body": "",
+      "createdAt": "2022-08-22T07:37:03Z",
+      "updatedAt": "2022-08-22T11:03:27Z",
+      "baseRepository": "danwing/authenticating-network",
+      "baseRefName": "main",
+      "baseRefOid": "6f3592ef09c88be08699183bb20abb15de9fd77e",
+      "headRepository": null,
+      "headRefName": "main",
+      "headRefOid": "24ab40a59626611ce02c1d55314b4171161cc678",
+      "closedAt": null,
+      "mergedAt": null,
+      "mergedBy": null,
+      "mergeCommit": null,
+      "comments": [],
+      "reviews": []
+    }
+  ]
 }
