@@ -1,9 +1,9 @@
 ---
-title: "Authenticating a Network Connection"
-abbrev: "Authenticating a Network Connection"
+title: "Asserting a network connection using revolver's identity"
+abbrev: "Asserting a network cx using revolver's identity"
 category: info
 
-docname: draft-wing-authenticating-network-latest
+docname: draft-wing-opsawg-authenticating-network-latest
 submissiontype: IETF  # also: "independent", "IAB", or "IRTF"
 number:
 date:
@@ -39,6 +39,7 @@ author:
 normative:
   DNR:    I-D.ietf-add-dnr
   DDR:    I-D.ietf-add-ddr
+  AKA:    I-D.ietf-emu-aka-pfs
 
 informative:
   Evil-Twin:
@@ -100,14 +101,18 @@ will be available to all nodes, including attackers, so it is possible
 to mount an active on-path attack.
 
 This document describes how a wired or wireless client can utilize
-network-advertised encrypted DNS servers to ensure the attacker has
-no more visibility to the client's DNS traffic than the legitimate
-network.  In cases where the local network provides its own
-encrypted DNS server, the client can even ensure it has re-connected
-to the same network, offering the client enough information to
-positively detect a significant change in the encrypted DNS server
-configuration -- a strong indicator of an attacker operating the
-network.
+network-advertised encrypted DNS servers to ensure the attacker has no
+more visibility to the client's DNS traffic than the legitimate
+network.  In cases where the local network provides its own encrypted
+DNS server, the client can even ensure it has re-connected to the same
+network, offering the client enough information to positively detect a
+significant change in the encrypted DNS server configuration -- a
+strong indicator of an attacker operating the network.  The proposed
+mechanism is also useful in deployments using Opportunistic Wireless
+Encryption [RFC8110] and in LTE/5G mobile networks where the long-term
+key in the SIM card on the UE is compromised (Section 1 of [AKA]).
+
+
 
 
 # Conventions and Definitions
@@ -174,7 +179,8 @@ network name, BSSID, encrypted resolver disovery mechanism and
 encrypted DNS server's identity should all match for this
 re-connection.  If the encrypted DNS server's identity differs, this
 indicates a different network than expected -- either a different
-network (that happens to also use the same SSID) or an Evil Twin
+network (that happens to also use the same SSID), change of the
+network's encrypted DNS server identity, or an Evil Twin
 attack.  The client can then take appropriate action.
 
 
@@ -199,10 +205,11 @@ information if the network's physical address
 included as part of the SSID.  Thus the only safe SSID name provides
 no information to assist social engineering attacks such as a customer
 number (customer-123.example.net), assuming the customer number can
-safely be disclosed to neighbors.  Such attacks are not a concern
-in deployments where the network name purposefully includes the
-business name or address (e.g., 123-Main-Street.example.com,
-coffee-bar.example.com).
+safely be disclosed to neighbors.  Such attacks are not a concern in
+deployments where the network name purposefully includes the business
+name or address (e.g., Public WiFi hotspots;
+123-Main-Street.example.com, coffee-bar.example.com).
+
 
 
 # Common WiFi Names
@@ -220,6 +227,14 @@ around the world, such as branch offices of a corporation.
 
 
 # Security Considerations
+
+In near future, content delivery networks, sensitive domains and
+endpoints will migrate to TLS 1.3 and ECH.  If the attacker's network
+conveys the same encrypted revolver's identity as the legitimate
+network, it will not have any visibility into the private and
+sensitive information about the target domain. However, the attacker's
+network will have visibility into the traffic metadata like
+destination IP address.
 
 The network authentication mechanism relies on an attacker's inability
 to obtain a signed certificate for the victim's domain name.
