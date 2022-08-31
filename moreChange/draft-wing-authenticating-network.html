@@ -8,16 +8,16 @@
 <meta content="Dan Wing" name="author">
 <meta content="Tirumaleswar Reddy" name="author">
 <meta content="
-       This document describes how a a client uses encrypted DNS to reduce
+       This document describes how a a client uses the encrypted DNS server identity to reduce
 an attacker's capabilities if the attacker is operating a look-alike
 network. 
     " name="description">
-<meta content="xml2rfc 3.14.0" name="generator">
+<meta content="xml2rfc 3.14.2" name="generator">
 <meta content="network" name="keyword">
 <meta content="security" name="keyword">
 <meta content="draft-wing-authenticating-network-latest" name="ietf.draft">
 <!-- Generator version information:
-  xml2rfc 3.14.0
+  xml2rfc 3.14.2
     Python 3.10.5
     appdirs 1.4.4
     ConfigArgParse 1.5.3
@@ -1043,7 +1043,7 @@ svg :is([stroke="fill"], [fill^="#fff"]) {
 </tr></thead>
 <tfoot><tr>
 <td class="left">Wing &amp; Reddy</td>
-<td class="center">Expires 2 March 2023</td>
+<td class="center">Expires 4 March 2023</td>
 <td class="right">[Page]</td>
 </tr></tfoot>
 </table>
@@ -1056,12 +1056,12 @@ svg :is([stroke="fill"], [fill^="#fff"]) {
 <dd class="internet-draft">draft-wing-authenticating-network-latest</dd>
 <dt class="label-published">Published:</dt>
 <dd class="published">
-<time datetime="2022-08-29" class="published">29 August 2022</time>
+<time datetime="2022-08-31" class="published">31 August 2022</time>
     </dd>
 <dt class="label-intended-status">Intended Status:</dt>
 <dd class="intended-status">Informational</dd>
 <dt class="label-expires">Expires:</dt>
-<dd class="expires"><time datetime="2023-03-02">2 March 2023</time></dd>
+<dd class="expires"><time datetime="2023-03-04">4 March 2023</time></dd>
 <dt class="label-authors">Authors:</dt>
 <dd class="authors">
 <div class="author">
@@ -1078,7 +1078,7 @@ svg :is([stroke="fill"], [fill^="#fff"]) {
 <h1 id="title">Authenticating a Network Connection</h1>
 <section id="section-abstract">
       <h2 id="abstract"><a href="#abstract" class="selfRef">Abstract</a></h2>
-<p id="section-abstract-1">This document describes how a a client uses encrypted DNS to reduce
+<p id="section-abstract-1">This document describes how a a client uses the encrypted DNS server identity to reduce
 an attacker's capabilities if the attacker is operating a look-alike
 network.<a href="#section-abstract-1" class="pilcrow">¶</a></p>
 </section>
@@ -1112,7 +1112,7 @@ network.<a href="#section-abstract-1" class="pilcrow">¶</a></p>
         time. It is inappropriate to use Internet-Drafts as reference
         material or to cite them other than as "work in progress."<a href="#section-boilerplate.1-3" class="pilcrow">¶</a></p>
 <p id="section-boilerplate.1-4">
-        This Internet-Draft will expire on 2 March 2023.<a href="#section-boilerplate.1-4" class="pilcrow">¶</a></p>
+        This Internet-Draft will expire on 4 March 2023.<a href="#section-boilerplate.1-4" class="pilcrow">¶</a></p>
 </section>
 </div>
 <div id="copyright">
@@ -1253,7 +1253,11 @@ Service Set Identifier (BSSID) with the encrypted DNS server's
 identity (TLS SubjectAltName) that was learned via <span>[<a href="#DNR" class="xref">DNR</a>]</span> or <span>[<a href="#DDR" class="xref">DDR</a>]</span>.<a href="#section-3-2" class="pilcrow">¶</a></p>
 <ul class="normal ulEmpty">
 <li class="normal ulEmpty" id="section-3-3.1">
-          <p id="section-3-3.1.1">todo: Improve the discussion, below, of multiple BSSIDs<a href="#section-3-3.1.1" class="pilcrow">¶</a></p>
+          <p id="section-3-3.1.1">todo: Improve the discussion, below, of multiple BSSIDs.  The
+  existing text handles joining and re-joining SSID+BSSID, but
+  how do we handle re-joining the same network with a not-seen-before
+  BSSID.  We should consider pros/cons of not using BSSID versus
+  solely using SSID.<a href="#section-3-3.1.1" class="pilcrow">¶</a></p>
 </li>
       </ul>
 <p id="section-3-4">Some WiFi deployments have multiple BSSIDs where 802.11r coordinates
@@ -1261,42 +1265,20 @@ session keys amongst access points.  When moving between such
 access points, re-authentication ensures those APs are part of
 the same network and their BSSIDs can be added to the list of BSSIDs
 for this SSID.<a href="#section-3-4" class="pilcrow">¶</a></p>
-<ul class="normal ulEmpty">
-<li class="normal ulEmpty" id="section-3-5.1">
-          <p id="section-3-5.1.1">todo: the following TOFU is not specific to this I-D, I would say
-  it's a burden of DDR/DNR to do user validation of the DNS server,
-  isn't it?  (yes, I know that means the user won't get prompted.
-  I think that is okay.)<a href="#section-3-5.1.1" class="pilcrow">¶</a></p>
-</li>
-      </ul>
-<p id="section-3-6">If this is the first time connecting to that encrypted DNS server's
-identity, an action can be performed such as prompting the user for
-verification, verifying the encrypted DNS server's certificate with
-the fingerprint provided in an extended WiFi QR code (<a href="#qr" class="xref">Appendix A</a>),
-consulting a crowd-sourced database, reputation system, or -- perhaps
-best -- using a matching SSID and SubjectAltName described in
-<a href="#avoid-tofu" class="xref">Section 4</a>.  After this step, the relationship of SSID,
-BSSID, encrypted resolver discovery mechanism, and SubjectAltName are
-stored on the client.<a href="#section-3-6" class="pilcrow">¶</a></p>
-<p id="section-3-7">For illustrative purpose, below is an example of the data stored for
-two WiFi networks, "Example WiFi" and "Example2 WiFi",<a href="#section-3-7" class="pilcrow">¶</a></p>
-<div class="alignLeft art-text artwork" id="section-3-8">
-<pre>
-  SSID:"Example WiFi"; BSSID:"d8:c7:c8:44:32:40":
-  Discovery:"DNR"; Identity:"resolver1.example.com".
-  SSID:"Example2 WiFi"; BSSID:"d8:c7:c8:44:32:42":
-  Discovery:"DDR"; Identity:"8.8.8.8".
-</pre><a href="#section-3-8" class="pilcrow">¶</a>
-</div>
-<ul class="normal ulEmpty">
-<li class="normal ulEmpty" id="section-3-9.1">
-          <p id="section-3-9.1.1">todo: Tiru, what is the above data format?  How about using JSON like below.
-  Note I also added non-precise GPS coordinates (just two decimal
-  places which is approximately 1km resolution).  I also added two BSSIDs
-  and two DNS servers for example2.<a href="#section-3-9.1.1" class="pilcrow">¶</a></p>
-</li>
-      </ul>
-<div class="alignLeft art-text artwork" id="section-3-10">
+<p id="section-3-5">If this is the first time connecting to that encrypted DNS server's
+identity, normal <span>[<a href="#DNR" class="xref">DNR</a>]</span> or <span>[<a href="#DDR" class="xref">DDR</a>]</span> procedures are followed, which will
+authenticate and authorize that encrypted DNS server's identity.<a href="#section-3-5" class="pilcrow">¶</a></p>
+<p id="section-3-6">Better authentication can be performed byverifying the encrypted DNS
+server's certificate with the fingerprint provided in an extended WiFi
+QR code (<a href="#qr" class="xref">Appendix A</a>), consulting a crowd-sourced database, reputation
+system, or -- perhaps best -- using a matching SSID and SubjectAltName
+described in <a href="#avoid-tofu" class="xref">Section 4</a>.<a href="#section-3-6" class="pilcrow">¶</a></p>
+<p id="section-3-7">After this step, the relationship of SSID, BSSID, encrypted resolver
+discovery mechanism, and SubjectAltName are stored on the client.<a href="#section-3-7" class="pilcrow">¶</a></p>
+<p id="section-3-8">For illustrative purpose, below is an example of the data stored for
+two WiFi networks, "Example WiFi" (showing one BSSID) and "Example2 WiFi"
+(showing two BSSIDs),<a href="#section-3-8" class="pilcrow">¶</a></p>
+<div class="alignLeft art-text artwork" id="section-3-9">
 <pre>
    { "networks": [{
         "SSID": "Example WiFi",
@@ -1308,18 +1290,18 @@ two WiFi networks, "Example WiFi" and "Example2 WiFi",<a href="#section-3-7" cla
         "BSSID": ["d8:c7:c8:44:32:49", "d8:c7:c8:44:32:50"],
         "Discovery": "DDR",
         "Encrypted DNS": ["8.8.8.8","1.1.1.1"]   }]}
-</pre><a href="#section-3-10" class="pilcrow">¶</a>
+</pre><a href="#section-3-9" class="pilcrow">¶</a>
 </div>
-<p id="section-3-11">If this is not the first time connecting to this same SSID then the WiFi
+<p id="section-3-10">If this is not the first time connecting to this same SSID then the WiFi
 network name, BSSID, encrypted resolver disovery mechanism and
 encrypted DNS server's identity should all match for this
 re-connection.  If the encrypted DNS server's identity differs, this
 indicates a different network than expected -- either a different
 network (that happens to also use the same SSID) or an Evil Twin
-attack.  The client can then take appropriate action.<a href="#section-3-11" class="pilcrow">¶</a></p>
+attack.  The client can then take appropriate action.<a href="#section-3-10" class="pilcrow">¶</a></p>
 <ul class="normal ulEmpty">
-<li class="normal ulEmpty" id="section-3-12.1">
-          <p id="section-3-12.1.1">todo: if a network advertises 8.8.8.8 via DNR or DDR, we can't
+<li class="normal ulEmpty" id="section-3-11.1">
+          <p id="section-3-11.1.1">todo: if a network advertises 8.8.8.8 via DNR or DDR, we can't
     detect an evil twin.  How do we identify 8.8.8.8 as a public DNS
     server?  Could we say the network-advertise encrypted DNS server
     has to be on the same network (RFC1918 space or same /64) as the
@@ -1327,7 +1309,7 @@ attack.  The client can then take appropriate action.<a href="#section-3-11" cla
     idea is "if you've seen this same certificate via another SSID",
     but that doesn't work well, either:  for example, I have a single
     DNS server in my house for all of my various SSIDs (guest, IoT,
-    home network, work network).  Hmm.  Need more ideas.<a href="#section-3-12.1.1" class="pilcrow">¶</a></p>
+    home network, work network).  Hmm.  Need more ideas.<a href="#section-3-11.1.1" class="pilcrow">¶</a></p>
 </li>
       </ul>
 </section>
