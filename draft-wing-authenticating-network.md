@@ -62,7 +62,7 @@ informative:
 
 --- abstract
 
-This document describes how a a client uses encrypted DNS to reduce
+This document describes how a a client uses the encrypted DNS server identity to reduce
 an attacker's capabilities if the attacker is operating a look-alike
 network.
 
@@ -126,7 +126,11 @@ The client can associate the WiFi network name (SSID) and the Basic
 Service Set Identifier (BSSID) with the encrypted DNS server's
 identity (TLS SubjectAltName) that was learned via [DNR] or [DDR].
 
-> todo: Improve the discussion, below, of multiple BSSIDs
+> todo: Improve the discussion, below, of multiple BSSIDs.  The
+  existing text handles joining and re-joining SSID+BSSID, but
+  how do we handle re-joining the same network with a not-seen-before
+  BSSID.  We should consider pros/cons of not using BSSID versus
+  solely using SSID.
 
 Some WiFi deployments have multiple BSSIDs where 802.11r coordinates
 session keys amongst access points.  When moving between such
@@ -134,38 +138,23 @@ access points, re-authentication ensures those APs are part of
 the same network and their BSSIDs can be added to the list of BSSIDs
 for this SSID.
 
-
-> todo: the following TOFU is not specific to this I-D, I would say
-  it's a burden of DDR/DNR to do user validation of the DNS server,
-  isn't it?  (yes, I know that means the user won't get prompted.
-  I think that is okay.)
-
-
 If this is the first time connecting to that encrypted DNS server's
-identity, an action can be performed such as prompting the user for
-verification, verifying the encrypted DNS server's certificate with
-the fingerprint provided in an extended WiFi QR code ({{qr}}),
-consulting a crowd-sourced database, reputation system, or -- perhaps
-best -- using a matching SSID and SubjectAltName described in
-{{avoid-tofu}}.  After this step, the relationship of SSID,
-BSSID, encrypted resolver discovery mechanism, and SubjectAltName are
-stored on the client.
+identity, normal [DNR] or [DDR] procedures are followed, which will
+authenticate and authorize that encrypted DNS server's identity.
+
+Better authentication can be performed byverifying the encrypted DNS
+server's certificate with the fingerprint provided in an extended WiFi
+QR code ({{qr}}), consulting a crowd-sourced database, reputation
+system, or -- perhaps best -- using a matching SSID and SubjectAltName
+described in {{avoid-tofu}}.
+
+After this step, the relationship of SSID, BSSID, encrypted resolver
+discovery mechanism, and SubjectAltName are stored on the client.
 
 
 For illustrative purpose, below is an example of the data stored for
-two WiFi networks, "Example WiFi" and "Example2 WiFi",
-
-~~~
-  SSID:"Example WiFi"; BSSID:"d8:c7:c8:44:32:40":
-  Discovery:"DNR"; Identity:"resolver1.example.com".
-  SSID:"Example2 WiFi"; BSSID:"d8:c7:c8:44:32:42":
-  Discovery:"DDR"; Identity:"8.8.8.8".
-~~~
-
-> todo: Tiru, what is the above data format?  How about using JSON like below.
-  Note I also added non-precise GPS coordinates (just two decimal
-  places which is approximately 1km resolution).  I also added two BSSIDs
-  and two DNS servers for example2.
+two WiFi networks, "Example WiFi" (showing one BSSID) and "Example2 WiFi"
+(showing two BSSIDs),
 
 ~~~
    { "networks": [{
