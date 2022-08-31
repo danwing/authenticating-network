@@ -1,6 +1,6 @@
 ---
 title: "Asserting a network connection using revolver's identity"
-abbrev: "Asserting a network cx using revolver's identity"
+abbrev: "Network connection using resolver"
 category: info
 
 docname: draft-wing-opsawg-authenticating-network-latest
