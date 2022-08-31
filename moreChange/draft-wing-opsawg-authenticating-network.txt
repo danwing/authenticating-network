@@ -9,8 +9,8 @@ Expires: 4 March 2023                                              Nokia
                                                           31 August 2022
 
 
-                  Authenticating a Network Connection
-                draft-wing-authenticating-network-latest
+        Asserting a network connection using revolver's identity
+            draft-wing-opsawg-authenticating-network-latest
 
 Abstract
 
@@ -25,7 +25,7 @@ About This Document
    The latest revision of this draft can be found at
    https://danwing.github.io/authenticating-network/draft-wing-
    authenticating-network.html.  Status information for this document
-   may be found at https://datatracker.ietf.org/doc/draft-wing-
+   may be found at https://datatracker.ietf.org/doc/draft-wing-opsawg-
    authenticating-network/.
 
    Source for this draft and an issue tracker can be found at
@@ -116,7 +116,11 @@ Table of Contents
    DNS server, the client can even ensure it has re-connected to the
    same network, offering the client enough information to positively
    detect a significant change in the encrypted DNS server configuration
-   -- a strong indicator of an attacker operating the network.
+   -- a strong indicator of an attacker operating the network.  The
+   proposed mechanism is also useful in deployments using Opportunistic
+   Wireless Encryption [RFC8110] and in LTE/5G mobile networks where the
+   long-term key in the SIM card on the UE is compromised (Section 1 of
+   [AKA]).
 
 2.  Conventions and Definitions
 
@@ -183,8 +187,9 @@ Table of Contents
    encrypted DNS server's identity should all match for this re-
    connection.  If the encrypted DNS server's identity differs, this
    indicates a different network than expected -- either a different
-   network (that happens to also use the same SSID) or an Evil Twin
-   attack.  The client can then take appropriate action.
+   network (that happens to also use the same SSID), change of the
+   network's encrypted DNS server identity, or an Evil Twin attack.  The
+   client can then take appropriate action.
 
       todo: if a network advertises 8.8.8.8 via DNR or DDR, we can't
       detect an evil twin.  How do we identify 8.8.8.8 as a public DNS
@@ -208,8 +213,8 @@ Table of Contents
    number (customer-123.example.net), assuming the customer number can
    safely be disclosed to neighbors.  Such attacks are not a concern in
    deployments where the network name purposefully includes the business
-   name or address (e.g., 123-Main-Street.example.com, coffee-
-   bar.example.com).
+   name or address (e.g., Public WiFi hotspots; 123-Main-
+   Street.example.com, coffee-bar.example.com).
 
 5.  Common WiFi Names
 
@@ -224,6 +229,14 @@ Table of Contents
 
 6.  Security Considerations
 
+   In near future, content delivery networks, sensitive domains and
+   endpoints will migrate to TLS 1.3 and ECH.  If the attacker's network
+   conveys the same encrypted revolver's identity as the legitimate
+   network, it will not have any visibility into the private and
+   sensitive information about the target domain.  However, the
+   attacker's network will have visibility into the traffic metadata
+   like destination IP address.
+
    The network authentication mechanism relies on an attacker's
    inability to obtain a signed certificate for the victim's domain
    name.
@@ -235,6 +248,14 @@ Table of Contents
 8.  References
 
 8.1.  Normative References
+
+   [AKA]      Arkko, J., Norrman, K., Torvinen, V., and J. Mattsson,
+              "Forward Secrecy for the Extensible Authentication
+              Protocol Method for Authentication and Key Agreement (EAP-
+              AKA' FS)", Work in Progress, Internet-Draft, draft-ietf-
+              emu-aka-pfs-07, 11 July 2022,
+              <https://datatracker.ietf.org/doc/html/draft-ietf-emu-aka-
+              pfs-07>.
 
    [DDR]      Pauly, T., Kinnear, E., Wood, C. A., McManus, P., and T.
               Jensen, "Discovery of Designated Resolvers", Work in

@@ -4,7 +4,7 @@
 <meta charset="utf-8">
 <meta content="Common,Latin" name="scripts">
 <meta content="initial-scale=1.0" name="viewport">
-<title>Authenticating a Network Connection</title>
+<title>Asserting a network connection using revolver's identity</title>
 <meta content="Dan Wing" name="author">
 <meta content="Tirumaleswar Reddy" name="author">
 <meta content="
@@ -15,7 +15,7 @@ network.
 <meta content="xml2rfc 3.14.2" name="generator">
 <meta content="network" name="keyword">
 <meta content="security" name="keyword">
-<meta content="draft-wing-authenticating-network-latest" name="ietf.draft">
+<meta content="draft-wing-opsawg-authenticating-network-latest" name="ietf.draft">
 <!-- Generator version information:
   xml2rfc 3.14.2
     Python 3.10.5
@@ -34,7 +34,7 @@ network.
     setuptools 59.4.0
     six 1.16.0
 -->
-<link href="draft-wing-authenticating-network.xml" rel="alternate" type="application/rfc+xml">
+<link href="draft-wing-opsawg-authenticating-network.xml" rel="alternate" type="application/rfc+xml">
 <link href="#copyright" rel="license">
 <style type="text/css">@font-face {
   font-family: 'Lora';
@@ -1038,7 +1038,7 @@ svg :is([stroke="fill"], [fill^="#fff"]) {
 <table class="ears">
 <thead><tr>
 <td class="left">Internet-Draft</td>
-<td class="center">Authenticating a Network Connection</td>
+<td class="center">Asserting a network cx using revolver's </td>
 <td class="right">August 2022</td>
 </tr></thead>
 <tfoot><tr>
@@ -1053,7 +1053,7 @@ svg :is([stroke="fill"], [fill^="#fff"]) {
 <dt class="label-workgroup">Workgroup:</dt>
 <dd class="workgroup">Network Working Group</dd>
 <dt class="label-internet-draft">Internet-Draft:</dt>
-<dd class="internet-draft">draft-wing-authenticating-network-latest</dd>
+<dd class="internet-draft">draft-wing-opsawg-authenticating-network-latest</dd>
 <dt class="label-published">Published:</dt>
 <dd class="published">
 <time datetime="2022-08-31" class="published">31 August 2022</time>
@@ -1075,7 +1075,7 @@ svg :is([stroke="fill"], [fill^="#fff"]) {
 </dd>
 </dl>
 </div>
-<h1 id="title">Authenticating a Network Connection</h1>
+<h1 id="title">Asserting a network connection using revolver's identity</h1>
 <section id="section-abstract">
       <h2 id="abstract"><a href="#abstract" class="selfRef">Abstract</a></h2>
 <p id="section-abstract-1">This document describes how a a client uses the encrypted DNS server identity to reduce
@@ -1089,7 +1089,7 @@ network.<a href="#section-abstract-1" class="pilcrow">¶</a></p>
 <p id="section-note.1-1">This note is to be removed before publishing as an RFC.<a href="#section-note.1-1" class="pilcrow">¶</a></p>
 <p id="section-note.1-2">
         The latest revision of this draft can be found at <span><a href="https://danwing.github.io/authenticating-network/draft-wing-authenticating-network.html">https://danwing.github.io/authenticating-network/draft-wing-authenticating-network.html</a></span>.
-        Status information for this document may be found at <span><a href="https://datatracker.ietf.org/doc/draft-wing-authenticating-network/">https://datatracker.ietf.org/doc/draft-wing-authenticating-network/</a></span>.<a href="#section-note.1-2" class="pilcrow">¶</a></p>
+        Status information for this document may be found at <span><a href="https://datatracker.ietf.org/doc/draft-wing-opsawg-authenticating-network/">https://datatracker.ietf.org/doc/draft-wing-opsawg-authenticating-network/</a></span>.<a href="#section-note.1-2" class="pilcrow">¶</a></p>
 <p id="section-note.1-3">Source for this draft and an issue tracker can be found at
         <span><a href="https://github.com/danwing/authenticating-network">https://github.com/danwing/authenticating-network</a></span>.<a href="#section-note.1-3" class="pilcrow">¶</a></p>
 </section>
@@ -1218,14 +1218,16 @@ the same for all clients that connect to the same WLAN, the shared key
 will be available to all nodes, including attackers, so it is possible
 to mount an active on-path attack.<a href="#section-1-2" class="pilcrow">¶</a></p>
 <p id="section-1-3">This document describes how a wired or wireless client can utilize
-network-advertised encrypted DNS servers to ensure the attacker has
-no more visibility to the client's DNS traffic than the legitimate
-network.  In cases where the local network provides its own
-encrypted DNS server, the client can even ensure it has re-connected
-to the same network, offering the client enough information to
-positively detect a significant change in the encrypted DNS server
-configuration -- a strong indicator of an attacker operating the
-network.<a href="#section-1-3" class="pilcrow">¶</a></p>
+network-advertised encrypted DNS servers to ensure the attacker has no
+more visibility to the client's DNS traffic than the legitimate
+network.  In cases where the local network provides its own encrypted
+DNS server, the client can even ensure it has re-connected to the same
+network, offering the client enough information to positively detect a
+significant change in the encrypted DNS server configuration -- a
+strong indicator of an attacker operating the network.  The proposed
+mechanism is also useful in deployments using Opportunistic Wireless
+Encryption <span>[<a href="#RFC8110" class="xref">RFC8110</a>]</span> and in LTE/5G mobile networks where the long-term
+key in the SIM card on the UE is compromised (Section 1 of <span>[<a href="#AKA" class="xref">AKA</a>]</span>).<a href="#section-1-3" class="pilcrow">¶</a></p>
 </section>
 </div>
 <div id="conventions-and-definitions">
@@ -1297,7 +1299,8 @@ network name, BSSID, encrypted resolver disovery mechanism and
 encrypted DNS server's identity should all match for this
 re-connection.  If the encrypted DNS server's identity differs, this
 indicates a different network than expected -- either a different
-network (that happens to also use the same SSID) or an Evil Twin
+network (that happens to also use the same SSID), change of the
+network's encrypted DNS server identity, or an Evil Twin
 attack.  The client can then take appropriate action.<a href="#section-3-10" class="pilcrow">¶</a></p>
 <ul class="normal ulEmpty">
 <li class="normal ulEmpty" id="section-3-11.1">
@@ -1327,10 +1330,10 @@ information if the network's physical address
 included as part of the SSID.  Thus the only safe SSID name provides
 no information to assist social engineering attacks such as a customer
 number (customer-123.example.net), assuming the customer number can
-safely be disclosed to neighbors.  Such attacks are not a concern
-in deployments where the network name purposefully includes the
-business name or address (e.g., 123-Main-Street.example.com,
-coffee-bar.example.com).<a href="#section-4-1" class="pilcrow">¶</a></p>
+safely be disclosed to neighbors.  Such attacks are not a concern in
+deployments where the network name purposefully includes the business
+name or address (e.g., Public WiFi hotspots;
+123-Main-Street.example.com, coffee-bar.example.com).<a href="#section-4-1" class="pilcrow">¶</a></p>
 </section>
 </div>
 <div id="common-wifi-names">
@@ -1351,8 +1354,15 @@ around the world, such as branch offices of a corporation.<a href="#section-5-3"
       <h2 id="name-security-considerations">
 <a href="#section-6" class="section-number selfRef">6. </a><a href="#name-security-considerations" class="section-name selfRef">Security Considerations</a>
       </h2>
-<p id="section-6-1">The network authentication mechanism relies on an attacker's inability
-to obtain a signed certificate for the victim's domain name.<a href="#section-6-1" class="pilcrow">¶</a></p>
+<p id="section-6-1">In near future, content delivery networks, sensitive domains and
+endpoints will migrate to TLS 1.3 and ECH.  If the attacker's network
+conveys the same encrypted revolver's identity as the legitimate
+network, it will not have any visibility into the private and
+sensitive information about the target domain. However, the attacker's
+network will have visibility into the traffic metadata like
+destination IP address.<a href="#section-6-1" class="pilcrow">¶</a></p>
+<p id="section-6-2">The network authentication mechanism relies on an attacker's inability
+to obtain a signed certificate for the victim's domain name.<a href="#section-6-2" class="pilcrow">¶</a></p>
 </section>
 </div>
 <div id="iana-considerations">
@@ -1372,6 +1382,10 @@ to obtain a signed certificate for the victim's domain name.<a href="#section-6-
 <a href="#section-8.1" class="section-number selfRef">8.1. </a><a href="#name-normative-references" class="section-name selfRef">Normative References</a>
         </h3>
 <dl class="references">
+<dt id="AKA">[AKA]</dt>
+        <dd>
+<span class="refAuthor">Arkko, J.</span>, <span class="refAuthor">Norrman, K.</span>, <span class="refAuthor">Torvinen, V.</span>, and <span class="refAuthor">J. Mattsson</span>, <span class="refTitle">"Forward Secrecy for the Extensible Authentication Protocol Method for Authentication and Key Agreement (EAP-AKA' FS)"</span>, <span class="refContent">Work in Progress</span>, <span class="seriesInfo">Internet-Draft, draft-ietf-emu-aka-pfs-07</span>, <time datetime="2022-07-11" class="refDate">11 July 2022</time>, <span>&lt;<a href="https://datatracker.ietf.org/doc/html/draft-ietf-emu-aka-pfs-07">https://datatracker.ietf.org/doc/html/draft-ietf-emu-aka-pfs-07</a>&gt;</span>. </dd>
+<dd class="break"></dd>
 <dt id="DDR">[DDR]</dt>
         <dd>
 <span class="refAuthor">Pauly, T.</span>, <span class="refAuthor">Kinnear, E.</span>, <span class="refAuthor">Wood, C. A.</span>, <span class="refAuthor">McManus, P.</span>, and <span class="refAuthor">T. Jensen</span>, <span class="refTitle">"Discovery of Designated Resolvers"</span>, <span class="refContent">Work in Progress</span>, <span class="seriesInfo">Internet-Draft, draft-ietf-add-ddr-10</span>, <time datetime="2022-08-05" class="refDate">5 August 2022</time>, <span>&lt;<a href="https://datatracker.ietf.org/doc/html/draft-ietf-add-ddr-10">https://datatracker.ietf.org/doc/html/draft-ietf-add-ddr-10</a>&gt;</span>. </dd>
