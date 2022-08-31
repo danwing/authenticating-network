@@ -5,19 +5,18 @@
 Network Working Group                                            D. Wing
 Internet-Draft                                                    Citrix
 Intended status: Informational                                  T. Reddy
-Expires: 20 February 2023                                          Nokia
-                                                          19 August 2022
+Expires: 4 March 2023                                              Nokia
+                                                          31 August 2022
 
 
-                  Authenticating a Network Connection
-                draft-wing-authenticating-network-latest
+        Asserting a network connection using revolver's identity
+            draft-wing-opsawg-authenticating-network-latest
 
 Abstract
 
-   When connecting to a wired or wireless network, users assume the same
-   network exists each time.  This document describes how a network
-   client can verify it is, in fact, connecting to the same network,
-   without relying on layer 1 or layer 2 security.
+   This document describes how a a client uses the encrypted DNS server
+   identity to reduce an attacker's capabilities if the attacker is
+   operating a look-alike network.
 
 About This Document
 
@@ -26,7 +25,7 @@ About This Document
    The latest revision of this draft can be found at
    https://danwing.github.io/authenticating-network/draft-wing-
    authenticating-network.html.  Status information for this document
-   may be found at https://datatracker.ietf.org/doc/draft-wing-
+   may be found at https://datatracker.ietf.org/doc/draft-wing-opsawg-
    authenticating-network/.
 
    Source for this draft and an issue tracker can be found at
@@ -47,7 +46,7 @@ Status of This Memo
    time.  It is inappropriate to use Internet-Drafts as reference
    material or to cite them other than as "work in progress."
 
-   This Internet-Draft will expire on 20 February 2023.
+   This Internet-Draft will expire on 4 March 2023.
 
 Copyright Notice
 
@@ -81,24 +80,47 @@ Table of Contents
 
 1.  Introduction
 
-   When a client connects to a network -- wired or wireless -- the user
-   or their device want to be sure the connection is to the expected
-   network, as different networks provides different services --
-   performance, security, access to split-horizon DNS servers, and so
-   on.  Although 802.1X provides layer 2 security for both Ethernet and
-   WiFi networks achieving the goals of this document, 802.1X is not
-   widely deployed and unavailable on LTE and 5G networks.
+   When a client connects to a wireless network the user or their device
+   want to be sure the connection is to the expected network, as
+   different networks provides different services -- performance,
+   security, access to split-horizon DNS servers, and so on.  Although
+   802.1X provides layer 2 security for both Ethernet and WiFi networks,
+   802.1X is not widely deployed and unavailable on LTE and 5G networks
+   -- and often applications are unaware if the underlying network was
+   protected with 802.1X.
 
-   On wired networks a malicious actor or innocent cabling or VLAN
-   configuration mistakes can cause the same physical Ethernet jack to
-   connect to a different network.  On WiFi networks a malicious actor
-   can operate a rogue access point with the same SSID and WPA-PSK as
-   the victim network [Evil-Twin].
+   On WiFi networks a malicious actor can operate a rogue access point
+   with the same SSID and WPA-PSK as the victim network [Evil-Twin].  In
+   many deployments (for example, coffee shops and bars) offer free Wi-
+   Fi as a customer incentive.  Since these businesses are not Internet
+   service providers, they are often unwilling and/or unqualified to
+   perform complex configuration on their network.  In addition,
+   customers are generally unwilling to do complicated provisioning on
+   their devices just to obtain free Wi-Fi.  This leads to a popular
+   deployment technique -- a network protected using a shared and public
+   Pre-Shared Key (PSK) that is printed on a sandwich board at the
+   entrance, on a chalkboard on the wall, or on a menu.  The PSK is used
+   in a cryptographic handshake, defined in [IEEE802.11], called the
+   "4-way handshake" to prove knowledge of the PSK and derive traffic
+   encryption keys for bulk wireless data.  The same deployement
+   technique is typically used in residential or small office/home
+   office networks.  If the Pre-Shared Key (PSK) for wireless
+   authentication is the same for all clients that connect to the same
+   WLAN, the shared key will be available to all nodes, including
+   attackers, so it is possible to mount an active on-path attack.
 
    This document describes how a wired or wireless client can utilize
-   network-advertised encrypted DNS servers to verify initial connection
-   to the intended network and automatically verify re-connection to the
-   same intended network.
+   network-advertised encrypted DNS servers to ensure the attacker has
+   no more visibility to the client's DNS traffic than the legitimate
+   network.  In cases where the local network provides its own encrypted
+   DNS server, the client can even ensure it has re-connected to the
+   same network, offering the client enough information to positively
+   detect a significant change in the encrypted DNS server configuration
+   -- a strong indicator of an attacker operating the network.  The
+   proposed mechanism is also useful in deployments using Opportunistic
+   Wireless Encryption [RFC8110] and in LTE/5G mobile networks where the
+   long-term key in the SIM card on the UE is compromised (Section 1 of
+   [AKA]).
 
 2.  Conventions and Definitions
 
@@ -111,36 +133,63 @@ Table of Contents
 3.  Procedure
 
    Client connects to network and obtains network information via
-   DHCPv4, DHCPv6, RA, or 3GPP mechanism.  The network indicates its
-   encrypted DNS server using either [DNR] or [DDR].  The client
-   connects to that encrypted DNS server, completes the TLS handshake
-   and performs public key validation of the presented certificate.
+   DHCPv4, DHCPv6, or RA.  The network indicates its encrypted DNS
+   server using either [DNR] or [DDR].  The client connects to that
+   encrypted DNS server, completes the TLS handshake and performs public
+   key validation of the presented certificate as normal.
 
-      todo: need name of, and citation to, the 3gpp mechanism.
+   The client can associate the WiFi network name (SSID) and the Basic
+   Service Set Identifier (BSSID) with the encrypted DNS server's
+   identity (TLS SubjectAltName) that was learned via [DNR] or [DDR].
 
-   As a wired network has no 'name', the network name can be considered
-   blank.  This isn't ideal, but it still allows the client to
-   distinguish between the first connection to a network versus re-
-   connecting to a network.
+      todo: Improve the discussion, below, of multiple BSSIDs.  The
+      existing text handles joining and re-joining SSID+BSSID, but how
+      do we handle re-joining the same network with a not-seen-before
+      BSSID.  We should consider pros/cons of not using BSSID versus
+      solely using SSID.
 
-   The client device's imprecise location (if known) and the WiFi
-   network name (SSID) can be associated with the encrypted DNS server's
-   SubjectAltName that was learned via [DNR] or [DDR].
+   Some WiFi deployments have multiple BSSIDs where 802.11r coordinates
+   session keys amongst access points.  When moving between such access
+   points, re-authentication ensures those APs are part of the same
+   network and their BSSIDs can be added to the list of BSSIDs for this
+   SSID.
 
    If this is the first time connecting to that encrypted DNS server's
-   identity, an action can be performed such as prompting the user for
-   verification, verifying the encrypted DNS server's certificate with
-   the fingerprint provided in an extended WiFi QR code (Appendix A),
-   consulting a crowd-sourced database, or -- perhaps best -- using a
-   matching SSID and SubjectAltName described in Section 4.  After this
-   step, the relationship of location, WiFi network name, and
-   SubjectAltName are stored on the client.
+   identity, normal [DNR] or [DDR] procedures are followed, which will
+   authenticate and authorize that encrypted DNS server's identity.
 
-   If this is not the first time connecting to this same SSID, the
-   client location, WiFi network name, and SubjectAltName should all
-   match for this re-connection.  If the SubjectAltName differs, this
+   Better authentication can be performed byverifying the encrypted DNS
+   server's certificate with the fingerprint provided in an extended
+   WiFi QR code (Appendix A), consulting a crowd-sourced database,
+   reputation system, or -- perhaps best -- using a matching SSID and
+   SubjectAltName described in Section 4.
+
+   After this step, the relationship of SSID, BSSID, encrypted resolver
+   discovery mechanism, and SubjectAltName are stored on the client.
+
+   For illustrative purpose, below is an example of the data stored for
+   two WiFi networks, "Example WiFi" (showing one BSSID) and "Example2
+   WiFi" (showing two BSSIDs),
+
+      { "networks": [{
+           "SSID": "Example WiFi",
+           "BSSID": ["d8:c7:c8:44:32:40"],
+           "Discovery": "DNR",
+           "Encrypted DNS": "resolver1.example.com"
+      },{
+           "SSID": "Example2 WiFi",
+           "BSSID": ["d8:c7:c8:44:32:49", "d8:c7:c8:44:32:50"],
+           "Discovery": "DDR",
+           "Encrypted DNS": ["8.8.8.8","1.1.1.1"]   }]}
+
+   If this is not the first time connecting to this same SSID then the
+   WiFi network name, BSSID, encrypted resolver disovery mechanism and
+   encrypted DNS server's identity should all match for this re-
+   connection.  If the encrypted DNS server's identity differs, this
    indicates a different network than expected -- either a different
-   network
+   network (that happens to also use the same SSID), change of the
+   network's encrypted DNS server identity, or an Evil Twin attack.  The
+   client can then take appropriate action.
 
       todo: if a network advertises 8.8.8.8 via DNR or DDR, we can't
       detect an evil twin.  How do we identify 8.8.8.8 as a public DNS
@@ -162,7 +211,10 @@ Table of Contents
    part of the SSID.  Thus the only safe SSID name provides no
    information to assist social engineering attacks such as a customer
    number (customer-123.example.net), assuming the customer number can
-   safely be disclosed to neighbors.
+   safely be disclosed to neighbors.  Such attacks are not a concern in
+   deployments where the network name purposefully includes the business
+   name or address (e.g., Public WiFi hotspots; 123-Main-
+   Street.example.com, coffee-bar.example.com).
 
 5.  Common WiFi Names
 
@@ -172,9 +224,18 @@ Table of Contents
    WiFi" or "Guest" but are distinct networks with different WPA-PSK or
    are not using security at all ("open" networks).
 
-   By using device location, client devices can avoid spurious
+   In other deployments, the same WiFi name is used in many locations
+   around the world, such as branch offices of a corporation.
 
 6.  Security Considerations
+
+   In near future, content delivery networks, sensitive domains and
+   endpoints will migrate to TLS 1.3 and ECH.  If the attacker's network
+   conveys the same encrypted revolver's identity as the legitimate
+   network, it will not have any visibility into the private and
+   sensitive information about the target domain.  However, the
+   attacker's network will have visibility into the traffic metadata
+   like destination IP address.
 
    The network authentication mechanism relies on an attacker's
    inability to obtain a signed certificate for the victim's domain
@@ -187,6 +248,14 @@ Table of Contents
 8.  References
 
 8.1.  Normative References
+
+   [AKA]      Arkko, J., Norrman, K., Torvinen, V., and J. Mattsson,
+              "Forward Secrecy for the Extensible Authentication
+              Protocol Method for Authentication and Key Agreement (EAP-
+              AKA' FS)", Work in Progress, Internet-Draft, draft-ietf-
+              emu-aka-pfs-07, 11 July 2022,
+              <https://datatracker.ietf.org/doc/html/draft-ietf-emu-aka-
+              pfs-07>.
 
    [DDR]      Pauly, T., Kinnear, E., Wood, C. A., McManus, P., and T.
               Jensen, "Discovery of Designated Resolvers", Work in
@@ -216,6 +285,14 @@ Table of Contents
               Wikipedia, "Evil twin (wireless networks)", June 2022,
               <https://en.wikipedia.org/wiki/
               Evil_twin_(wireless_networks)>.
+
+   [IEEE802.11]
+              Wikipedia, "IEEE802.11", August 2022,
+              <https://en.wikipedia.org/wiki/IEEE_802.11>.
+
+   [RFC8110]  Harkins, D., Ed. and W. Kumari, Ed., "Opportunistic
+              Wireless Encryption", RFC 8110, DOI 10.17487/RFC8110,
+              March 2017, <https://www.rfc-editor.org/rfc/rfc8110>.
 
    [RFC8792]  Watsen, K., Auerswald, E., Farrel, A., and Q. Wu,
               "Handling Long Lines in Content of Internet-Drafts and
@@ -255,6 +332,6 @@ Authors' Addresses
    Email: dwing-ietf@fuggles.com
 
 
-   Tiru Reddy
+   Tirumaleswar Reddy
    Nokia
    Email: kondtir@gmail.com

@@ -4,20 +4,20 @@
 <meta charset="utf-8">
 <meta content="Common,Latin" name="scripts">
 <meta content="initial-scale=1.0" name="viewport">
-<title>Authenticating a Network Connection</title>
+<title>Asserting a network connection using revolver's identity</title>
 <meta content="Dan Wing" name="author">
-<meta content="Tiru Reddy" name="author">
+<meta content="Tirumaleswar Reddy" name="author">
 <meta content="
-       When connecting to a wired or wireless network, users assume the same network exists each time.  This
-document describes how a network client can verify it is, in fact, connecting to the same network,
-without relying on layer 1 or layer 2 security. 
+       This document describes how a a client uses the encrypted DNS server identity to reduce
+an attacker's capabilities if the attacker is operating a look-alike
+network. 
     " name="description">
-<meta content="xml2rfc 3.14.0" name="generator">
+<meta content="xml2rfc 3.14.2" name="generator">
 <meta content="network" name="keyword">
 <meta content="security" name="keyword">
-<meta content="draft-wing-authenticating-network-latest" name="ietf.draft">
+<meta content="draft-wing-opsawg-authenticating-network-latest" name="ietf.draft">
 <!-- Generator version information:
-  xml2rfc 3.14.0
+  xml2rfc 3.14.2
     Python 3.10.5
     appdirs 1.4.4
     ConfigArgParse 1.5.3
@@ -34,7 +34,7 @@ without relying on layer 1 or layer 2 security.
     setuptools 59.4.0
     six 1.16.0
 -->
-<link href="draft-wing-authenticating-network.xml" rel="alternate" type="application/rfc+xml">
+<link href="draft-wing-opsawg-authenticating-network.xml" rel="alternate" type="application/rfc+xml">
 <link href="#copyright" rel="license">
 <style type="text/css">@font-face {
   font-family: 'Lora';
@@ -1038,12 +1038,12 @@ svg :is([stroke="fill"], [fill^="#fff"]) {
 <table class="ears">
 <thead><tr>
 <td class="left">Internet-Draft</td>
-<td class="center">Authenticating a Network Connection</td>
+<td class="center">Asserting a network cx using revolver's </td>
 <td class="right">August 2022</td>
 </tr></thead>
 <tfoot><tr>
 <td class="left">Wing &amp; Reddy</td>
-<td class="center">Expires 20 February 2023</td>
+<td class="center">Expires 4 March 2023</td>
 <td class="right">[Page]</td>
 </tr></tfoot>
 </table>
@@ -1053,15 +1053,15 @@ svg :is([stroke="fill"], [fill^="#fff"]) {
 <dt class="label-workgroup">Workgroup:</dt>
 <dd class="workgroup">Network Working Group</dd>
 <dt class="label-internet-draft">Internet-Draft:</dt>
-<dd class="internet-draft">draft-wing-authenticating-network-latest</dd>
+<dd class="internet-draft">draft-wing-opsawg-authenticating-network-latest</dd>
 <dt class="label-published">Published:</dt>
 <dd class="published">
-<time datetime="2022-08-19" class="published">19 August 2022</time>
+<time datetime="2022-08-31" class="published">31 August 2022</time>
     </dd>
 <dt class="label-intended-status">Intended Status:</dt>
 <dd class="intended-status">Informational</dd>
 <dt class="label-expires">Expires:</dt>
-<dd class="expires"><time datetime="2023-02-20">20 February 2023</time></dd>
+<dd class="expires"><time datetime="2023-03-04">4 March 2023</time></dd>
 <dt class="label-authors">Authors:</dt>
 <dd class="authors">
 <div class="author">
@@ -1075,12 +1075,12 @@ svg :is([stroke="fill"], [fill^="#fff"]) {
 </dd>
 </dl>
 </div>
-<h1 id="title">Authenticating a Network Connection</h1>
+<h1 id="title">Asserting a network connection using revolver's identity</h1>
 <section id="section-abstract">
       <h2 id="abstract"><a href="#abstract" class="selfRef">Abstract</a></h2>
-<p id="section-abstract-1">When connecting to a wired or wireless network, users assume the same network exists each time.  This
-document describes how a network client can verify it is, in fact, connecting to the same network,
-without relying on layer 1 or layer 2 security.<a href="#section-abstract-1" class="pilcrow">¶</a></p>
+<p id="section-abstract-1">This document describes how a a client uses the encrypted DNS server identity to reduce
+an attacker's capabilities if the attacker is operating a look-alike
+network.<a href="#section-abstract-1" class="pilcrow">¶</a></p>
 </section>
 <section class="note rfcEditorRemove" id="section-note.1">
       <h2 id="name-about-this-document">
@@ -1089,7 +1089,7 @@ without relying on layer 1 or layer 2 security.<a href="#section-abstract-1" cla
 <p id="section-note.1-1">This note is to be removed before publishing as an RFC.<a href="#section-note.1-1" class="pilcrow">¶</a></p>
 <p id="section-note.1-2">
         The latest revision of this draft can be found at <span><a href="https://danwing.github.io/authenticating-network/draft-wing-authenticating-network.html">https://danwing.github.io/authenticating-network/draft-wing-authenticating-network.html</a></span>.
-        Status information for this document may be found at <span><a href="https://datatracker.ietf.org/doc/draft-wing-authenticating-network/">https://datatracker.ietf.org/doc/draft-wing-authenticating-network/</a></span>.<a href="#section-note.1-2" class="pilcrow">¶</a></p>
+        Status information for this document may be found at <span><a href="https://datatracker.ietf.org/doc/draft-wing-opsawg-authenticating-network/">https://datatracker.ietf.org/doc/draft-wing-opsawg-authenticating-network/</a></span>.<a href="#section-note.1-2" class="pilcrow">¶</a></p>
 <p id="section-note.1-3">Source for this draft and an issue tracker can be found at
         <span><a href="https://github.com/danwing/authenticating-network">https://github.com/danwing/authenticating-network</a></span>.<a href="#section-note.1-3" class="pilcrow">¶</a></p>
 </section>
@@ -1112,7 +1112,7 @@ without relying on layer 1 or layer 2 security.<a href="#section-abstract-1" cla
         time. It is inappropriate to use Internet-Drafts as reference
         material or to cite them other than as "work in progress."<a href="#section-boilerplate.1-3" class="pilcrow">¶</a></p>
 <p id="section-boilerplate.1-4">
-        This Internet-Draft will expire on 20 February 2023.<a href="#section-boilerplate.1-4" class="pilcrow">¶</a></p>
+        This Internet-Draft will expire on 4 March 2023.<a href="#section-boilerplate.1-4" class="pilcrow">¶</a></p>
 </section>
 </div>
 <div id="copyright">
@@ -1191,22 +1191,43 @@ without relying on layer 1 or layer 2 security.<a href="#section-abstract-1" cla
       <h2 id="name-introduction">
 <a href="#section-1" class="section-number selfRef">1. </a><a href="#name-introduction" class="section-name selfRef">Introduction</a>
       </h2>
-<p id="section-1-1">When a client connects to a network -- wired or wireless -- the user
+<p id="section-1-1">When a client connects to a wireless network the user
 or their device want to be sure the connection is to the expected
 network, as different networks provides different services --
-performance, security, access to split-horizon DNS servers, and so on.
-Although 802.1X provides layer 2 security for both Ethernet and WiFi
-networks achieving the goals of this document, 802.1X is not widely
-deployed and unavailable on LTE and 5G networks.<a href="#section-1-1" class="pilcrow">¶</a></p>
-<p id="section-1-2">On wired networks a malicious actor or innocent cabling or VLAN
-configuration mistakes can cause the same physical Ethernet jack to
-connect to a different network.  On WiFi networks a malicious actor
-can operate a rogue access point with the same SSID and WPA-PSK as the
-victim network <span>[<a href="#Evil-Twin" class="xref">Evil-Twin</a>]</span>.<a href="#section-1-2" class="pilcrow">¶</a></p>
+performance, security, access to split-horizon DNS servers, and so on.  Although 802.1X provides layer 2
+security for both Ethernet and WiFi networks, 802.1X is not widely deployed
+and unavailable on LTE and 5G networks -- and often applications are
+unaware if the underlying network was protected with 802.1X.<a href="#section-1-1" class="pilcrow">¶</a></p>
+<p id="section-1-2">On WiFi networks a malicious actor can operate a rogue access point
+with the same SSID and WPA-PSK as the victim network <span>[<a href="#Evil-Twin" class="xref">Evil-Twin</a>]</span>.  In
+many deployments (for example, coffee shops and bars) offer free Wi-Fi
+as a customer incentive.  Since these businesses are not
+Internet service providers, they are often unwilling and/or
+unqualified to perform complex configuration on their network.  In
+addition, customers are generally unwilling to do complicated
+provisioning on their devices just to obtain free Wi-Fi.  This leads
+to a popular deployment technique -- a network protected using a
+shared and public Pre-Shared Key (PSK) that is printed on a sandwich
+board at the entrance, on a chalkboard on the wall, or on a menu.  The
+PSK is used in a cryptographic handshake, defined in <span>[<a href="#IEEE802.11" class="xref">IEEE802.11</a>]</span>,
+called the "4-way handshake" to prove knowledge of the PSK and derive
+traffic encryption keys for bulk wireless data. The same deployement
+technique is typically used in residential or small office/home office
+networks. If the Pre-Shared Key (PSK) for wireless authentication is
+the same for all clients that connect to the same WLAN, the shared key
+will be available to all nodes, including attackers, so it is possible
+to mount an active on-path attack.<a href="#section-1-2" class="pilcrow">¶</a></p>
 <p id="section-1-3">This document describes how a wired or wireless client can utilize
-network-advertised encrypted DNS servers to verify initial connection
-to the intended network and automatically verify re-connection to the
-same intended network.<a href="#section-1-3" class="pilcrow">¶</a></p>
+network-advertised encrypted DNS servers to ensure the attacker has no
+more visibility to the client's DNS traffic than the legitimate
+network.  In cases where the local network provides its own encrypted
+DNS server, the client can even ensure it has re-connected to the same
+network, offering the client enough information to positively detect a
+significant change in the encrypted DNS server configuration -- a
+strong indicator of an attacker operating the network.  The proposed
+mechanism is also useful in deployments using Opportunistic Wireless
+Encryption <span>[<a href="#RFC8110" class="xref">RFC8110</a>]</span> and in LTE/5G mobile networks where the long-term
+key in the SIM card on the UE is compromised (Section 1 of <span>[<a href="#AKA" class="xref">AKA</a>]</span>).<a href="#section-1-3" class="pilcrow">¶</a></p>
 </section>
 </div>
 <div id="conventions-and-definitions">
@@ -1225,35 +1246,65 @@ appear in all capitals, as shown here.<a href="#section-2-1" class="pilcrow">¶<
       <h2 id="name-procedure">
 <a href="#section-3" class="section-number selfRef">3. </a><a href="#name-procedure" class="section-name selfRef">Procedure</a>
       </h2>
-<p id="section-3-1">Client connects to network and obtains network information via DHCPv4, DHCPv6, RA, or 3GPP mechanism.
+<p id="section-3-1">Client connects to network and obtains network information via DHCPv4, DHCPv6, or RA.
 The network indicates its encrypted DNS server using either <span>[<a href="#DNR" class="xref">DNR</a>]</span> or <span>[<a href="#DDR" class="xref">DDR</a>]</span>.  The client connects
 to that encrypted DNS server, completes the TLS handshake and performs public key validation of
-the presented certificate.<a href="#section-3-1" class="pilcrow">¶</a></p>
+the presented certificate as normal.<a href="#section-3-1" class="pilcrow">¶</a></p>
+<p id="section-3-2">The client can associate the WiFi network name (SSID) and the Basic
+Service Set Identifier (BSSID) with the encrypted DNS server's
+identity (TLS SubjectAltName) that was learned via <span>[<a href="#DNR" class="xref">DNR</a>]</span> or <span>[<a href="#DDR" class="xref">DDR</a>]</span>.<a href="#section-3-2" class="pilcrow">¶</a></p>
 <ul class="normal ulEmpty">
-<li class="normal ulEmpty" id="section-3-2.1">
-          <p id="section-3-2.1.1">todo: need name of, and citation to, the 3gpp mechanism.<a href="#section-3-2.1.1" class="pilcrow">¶</a></p>
+<li class="normal ulEmpty" id="section-3-3.1">
+          <p id="section-3-3.1.1">todo: Improve the discussion, below, of multiple BSSIDs.  The
+  existing text handles joining and re-joining SSID+BSSID, but
+  how do we handle re-joining the same network with a not-seen-before
+  BSSID.  We should consider pros/cons of not using BSSID versus
+  solely using SSID.<a href="#section-3-3.1.1" class="pilcrow">¶</a></p>
 </li>
       </ul>
-<p id="section-3-3">As a wired network has no 'name', the network name can be considered blank. This
-isn't ideal, but it still allows the client to distinguish between the first
-connection to a network versus re-connecting to a network.<a href="#section-3-3" class="pilcrow">¶</a></p>
-<p id="section-3-4">The client device's imprecise location (if known) and the WiFi network
-name (SSID) can be associated with the encrypted DNS server's
-SubjectAltName that was learned via <span>[<a href="#DNR" class="xref">DNR</a>]</span> or <span>[<a href="#DDR" class="xref">DDR</a>]</span>.<a href="#section-3-4" class="pilcrow">¶</a></p>
-<p id="section-3-5">If this is the first time connecting to that encrypted DNS server's identity,
-an action can be performed such as prompting the user for verification,
-verifying the encrypted DNS server's certificate with the fingerprint provided
-in an extended WiFi QR code (<a href="#qr" class="xref">Appendix A</a>), consulting a crowd-sourced database,
-or -- perhaps best -- using a matching SSID and SubjectAltName described
-in <a href="#avoid-tofu" class="xref">Section 4</a>.  After this step, the relationship of location, WiFi network
-name, and SubjectAltName are stored on the client.<a href="#section-3-5" class="pilcrow">¶</a></p>
-<p id="section-3-6">If this is not the first time connecting to this same SSID,
-the client location, WiFi network name, and SubjectAltName should all
-match for this re-connection.  If the SubjectAltName differs, this indicates
-a different network than expected -- either a different network<a href="#section-3-6" class="pilcrow">¶</a></p>
+<p id="section-3-4">Some WiFi deployments have multiple BSSIDs where 802.11r coordinates
+session keys amongst access points.  When moving between such
+access points, re-authentication ensures those APs are part of
+the same network and their BSSIDs can be added to the list of BSSIDs
+for this SSID.<a href="#section-3-4" class="pilcrow">¶</a></p>
+<p id="section-3-5">If this is the first time connecting to that encrypted DNS server's
+identity, normal <span>[<a href="#DNR" class="xref">DNR</a>]</span> or <span>[<a href="#DDR" class="xref">DDR</a>]</span> procedures are followed, which will
+authenticate and authorize that encrypted DNS server's identity.<a href="#section-3-5" class="pilcrow">¶</a></p>
+<p id="section-3-6">Better authentication can be performed byverifying the encrypted DNS
+server's certificate with the fingerprint provided in an extended WiFi
+QR code (<a href="#qr" class="xref">Appendix A</a>), consulting a crowd-sourced database, reputation
+system, or -- perhaps best -- using a matching SSID and SubjectAltName
+described in <a href="#avoid-tofu" class="xref">Section 4</a>.<a href="#section-3-6" class="pilcrow">¶</a></p>
+<p id="section-3-7">After this step, the relationship of SSID, BSSID, encrypted resolver
+discovery mechanism, and SubjectAltName are stored on the client.<a href="#section-3-7" class="pilcrow">¶</a></p>
+<p id="section-3-8">For illustrative purpose, below is an example of the data stored for
+two WiFi networks, "Example WiFi" (showing one BSSID) and "Example2 WiFi"
+(showing two BSSIDs),<a href="#section-3-8" class="pilcrow">¶</a></p>
+<div class="alignLeft art-text artwork" id="section-3-9">
+<pre>
+   { "networks": [{
+        "SSID": "Example WiFi",
+        "BSSID": ["d8:c7:c8:44:32:40"],
+        "Discovery": "DNR",
+        "Encrypted DNS": "resolver1.example.com"
+   },{
+        "SSID": "Example2 WiFi",
+        "BSSID": ["d8:c7:c8:44:32:49", "d8:c7:c8:44:32:50"],
+        "Discovery": "DDR",
+        "Encrypted DNS": ["8.8.8.8","1.1.1.1"]   }]}
+</pre><a href="#section-3-9" class="pilcrow">¶</a>
+</div>
+<p id="section-3-10">If this is not the first time connecting to this same SSID then the WiFi
+network name, BSSID, encrypted resolver disovery mechanism and
+encrypted DNS server's identity should all match for this
+re-connection.  If the encrypted DNS server's identity differs, this
+indicates a different network than expected -- either a different
+network (that happens to also use the same SSID), change of the
+network's encrypted DNS server identity, or an Evil Twin
+attack.  The client can then take appropriate action.<a href="#section-3-10" class="pilcrow">¶</a></p>
 <ul class="normal ulEmpty">
-<li class="normal ulEmpty" id="section-3-7.1">
-          <p id="section-3-7.1.1">todo: if a network advertises 8.8.8.8 via DNR or DDR, we can't
+<li class="normal ulEmpty" id="section-3-11.1">
+          <p id="section-3-11.1.1">todo: if a network advertises 8.8.8.8 via DNR or DDR, we can't
     detect an evil twin.  How do we identify 8.8.8.8 as a public DNS
     server?  Could we say the network-advertise encrypted DNS server
     has to be on the same network (RFC1918 space or same /64) as the
@@ -1261,7 +1312,7 @@ a different network than expected -- either a different network<a href="#section
     idea is "if you've seen this same certificate via another SSID",
     but that doesn't work well, either:  for example, I have a single
     DNS server in my house for all of my various SSIDs (guest, IoT,
-    home network, work network).  Hmm.  Need more ideas.<a href="#section-3-7.1.1" class="pilcrow">¶</a></p>
+    home network, work network).  Hmm.  Need more ideas.<a href="#section-3-11.1.1" class="pilcrow">¶</a></p>
 </li>
       </ul>
 </section>
@@ -1277,9 +1328,12 @@ vanity SSID names.  Also, social engineering attacks gain additional
 information if the network's physical address
 (123-Main-Street.example.net) or name (John-Jones.example.net) is
 included as part of the SSID.  Thus the only safe SSID name provides
-no information to assist social engineering attacks such as a
-customer number (customer-123.example.net), assuming the customer
-number can safely be disclosed to neighbors.<a href="#section-4-1" class="pilcrow">¶</a></p>
+no information to assist social engineering attacks such as a customer
+number (customer-123.example.net), assuming the customer number can
+safely be disclosed to neighbors.  Such attacks are not a concern in
+deployments where the network name purposefully includes the business
+name or address (e.g., Public WiFi hotspots;
+123-Main-Street.example.com, coffee-bar.example.com).<a href="#section-4-1" class="pilcrow">¶</a></p>
 </section>
 </div>
 <div id="common-wifi-names">
@@ -1291,7 +1345,8 @@ number can safely be disclosed to neighbors.<a href="#section-4-1" class="pilcro
 <p id="section-5-2">Some WiFi names are pretty common such as "Airport WiFi" or "Hotel WiFi"
 or "Guest" but are distinct networks with different WPA-PSK or are not
 using security at all ("open" networks).<a href="#section-5-2" class="pilcrow">¶</a></p>
-<p id="section-5-3">By using device location, client devices can avoid spurious<a href="#section-5-3" class="pilcrow">¶</a></p>
+<p id="section-5-3">In other deployments, the same WiFi name is used in many locations
+around the world, such as branch offices of a corporation.<a href="#section-5-3" class="pilcrow">¶</a></p>
 </section>
 </div>
 <div id="security-considerations">
@@ -1299,8 +1354,15 @@ using security at all ("open" networks).<a href="#section-5-2" class="pilcrow">�
       <h2 id="name-security-considerations">
 <a href="#section-6" class="section-number selfRef">6. </a><a href="#name-security-considerations" class="section-name selfRef">Security Considerations</a>
       </h2>
-<p id="section-6-1">The network authentication mechanism relies on an attacker's inability
-to obtain a signed certificate for the victim's domain name.<a href="#section-6-1" class="pilcrow">¶</a></p>
+<p id="section-6-1">In near future, content delivery networks, sensitive domains and
+endpoints will migrate to TLS 1.3 and ECH.  If the attacker's network
+conveys the same encrypted revolver's identity as the legitimate
+network, it will not have any visibility into the private and
+sensitive information about the target domain. However, the attacker's
+network will have visibility into the traffic metadata like
+destination IP address.<a href="#section-6-1" class="pilcrow">¶</a></p>
+<p id="section-6-2">The network authentication mechanism relies on an attacker's inability
+to obtain a signed certificate for the victim's domain name.<a href="#section-6-2" class="pilcrow">¶</a></p>
 </section>
 </div>
 <div id="iana-considerations">
@@ -1320,6 +1382,10 @@ to obtain a signed certificate for the victim's domain name.<a href="#section-6-
 <a href="#section-8.1" class="section-number selfRef">8.1. </a><a href="#name-normative-references" class="section-name selfRef">Normative References</a>
         </h3>
 <dl class="references">
+<dt id="AKA">[AKA]</dt>
+        <dd>
+<span class="refAuthor">Arkko, J.</span>, <span class="refAuthor">Norrman, K.</span>, <span class="refAuthor">Torvinen, V.</span>, and <span class="refAuthor">J. Mattsson</span>, <span class="refTitle">"Forward Secrecy for the Extensible Authentication Protocol Method for Authentication and Key Agreement (EAP-AKA' FS)"</span>, <span class="refContent">Work in Progress</span>, <span class="seriesInfo">Internet-Draft, draft-ietf-emu-aka-pfs-07</span>, <time datetime="2022-07-11" class="refDate">11 July 2022</time>, <span>&lt;<a href="https://datatracker.ietf.org/doc/html/draft-ietf-emu-aka-pfs-07">https://datatracker.ietf.org/doc/html/draft-ietf-emu-aka-pfs-07</a>&gt;</span>. </dd>
+<dd class="break"></dd>
 <dt id="DDR">[DDR]</dt>
         <dd>
 <span class="refAuthor">Pauly, T.</span>, <span class="refAuthor">Kinnear, E.</span>, <span class="refAuthor">Wood, C. A.</span>, <span class="refAuthor">McManus, P.</span>, and <span class="refAuthor">T. Jensen</span>, <span class="refTitle">"Discovery of Designated Resolvers"</span>, <span class="refContent">Work in Progress</span>, <span class="seriesInfo">Internet-Draft, draft-ietf-add-ddr-10</span>, <time datetime="2022-08-05" class="refDate">5 August 2022</time>, <span>&lt;<a href="https://datatracker.ietf.org/doc/html/draft-ietf-add-ddr-10">https://datatracker.ietf.org/doc/html/draft-ietf-add-ddr-10</a>&gt;</span>. </dd>
@@ -1346,6 +1412,14 @@ to obtain a signed certificate for the victim's domain name.<a href="#section-6-
 <dt id="Evil-Twin">[Evil-Twin]</dt>
         <dd>
 <span class="refAuthor">Wikipedia</span>, <span class="refTitle">"Evil twin (wireless networks)"</span>, <time datetime="2022-06" class="refDate">June 2022</time>, <span>&lt;<a href="https://en.wikipedia.org/wiki/Evil_twin_(wireless_networks)">https://en.wikipedia.org/wiki/Evil_twin_(wireless_networks)</a>&gt;</span>. </dd>
+<dd class="break"></dd>
+<dt id="IEEE802.11">[IEEE802.11]</dt>
+        <dd>
+<span class="refAuthor">Wikipedia</span>, <span class="refTitle">"IEEE802.11"</span>, <time datetime="2022-08" class="refDate">August 2022</time>, <span>&lt;<a href="https://en.wikipedia.org/wiki/IEEE_802.11">https://en.wikipedia.org/wiki/IEEE_802.11</a>&gt;</span>. </dd>
+<dd class="break"></dd>
+<dt id="RFC8110">[RFC8110]</dt>
+        <dd>
+<span class="refAuthor">Harkins, D., Ed.</span> and <span class="refAuthor">W. Kumari, Ed.</span>, <span class="refTitle">"Opportunistic Wireless Encryption"</span>, <span class="seriesInfo">RFC 8110</span>, <span class="seriesInfo">DOI 10.17487/RFC8110</span>, <time datetime="2017-03" class="refDate">March 2017</time>, <span>&lt;<a href="https://www.rfc-editor.org/rfc/rfc8110">https://www.rfc-editor.org/rfc/rfc8110</a>&gt;</span>. </dd>
 <dd class="break"></dd>
 <dt id="RFC8792">[RFC8792]</dt>
       <dd>
@@ -1401,7 +1475,7 @@ D:28b236db27ff688f919b171e59e2fab81f9e4f2e;;
 </div>
 </address>
 <address class="vcard">
-        <div dir="auto" class="left"><span class="fn nameRole">Tiru Reddy</span></div>
+        <div dir="auto" class="left"><span class="fn nameRole">Tirumaleswar Reddy</span></div>
 <div dir="auto" class="left"><span class="org">Nokia</span></div>
 <div class="email">
 <span>Email:</span>
