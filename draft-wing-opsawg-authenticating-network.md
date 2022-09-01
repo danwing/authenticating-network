@@ -268,5 +268,6 @@ D:28b236db27ff688f919b171e59e2fab81f9e4f2e;;
 # Acknowledgments
 {:numbered="false"}
 
-This document was inspired by IETF review comments from Paul Wouters and Wes Eddy.
+This document was inspired by both Paul Wouters and Tommy Pauly during review of other documents.
+
 
