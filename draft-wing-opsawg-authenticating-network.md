@@ -10,7 +10,8 @@ date:
 consensus: true
 v: 3
 # area: AREA
-# workgroup: WG Working Group
+area: "ops"
+workgroup: "Operations and Management Area Working Group"
 keyword:
  - network
  - security
@@ -60,6 +61,7 @@ informative:
 
   RFC8792: RFC8792
   RFC8110: RFC8110
+  RFC7839: RFC7839
 
 --- abstract
 
@@ -127,9 +129,16 @@ The network indicates its encrypted DNS server using either [DNR] or [DDR].  The
 to that encrypted DNS server, completes the TLS handshake and performs public key validation of
 the presented certificate as normal.
 
-The client can associate the WiFi network name (SSID) and the Basic
-Service Set Identifier (BSSID) with the encrypted DNS server's
-identity (TLS SubjectAltName) that was learned via [DNR] or [DDR].
+The client can associate the network name with the encrypted DNS server's
+identity that was learned via [DNR] or [DDR]. The type of the network name is
+dependent on the access technology to which the endpoint is attached.
+For networks based on IEEE 802.11, the network name will be the SSID of
+the network and the Basic Service Set Identifier (BSSID). For 3GPP access-based networks, it
+is the Public Land-based Mobile Network (PLMN) Identifier of the access network, and for 3GPP2 access,
+the network name is the Access-Network Identifier (see [RFC7839]).
+If DDR is used for discovery, the client would have to perform verified discovery (see Section 4.2 of [DDR])
+and the encrypted DNS server identity will be the encrypted DNS server's IP address.
+If DNR is used, the encrypted DNS server identity will be Authentication Domain Name (ADN).
 
 > todo: Improve the discussion, below, of multiple BSSIDs.  The
   existing text handles joining and re-joining SSID+BSSID, but
@@ -183,18 +192,6 @@ network (that happens to also use the same SSID), change of the
 network's encrypted DNS server identity, or an Evil Twin
 attack.  The client can then take appropriate action.
 
-
-> todo: if a network advertises 8.8.8.8 via DNR or DDR, we can't
-    detect an evil twin.  How do we identify 8.8.8.8 as a public DNS
-    server?  Could we say the network-advertise encrypted DNS server
-    has to be on the same network (RFC1918 space or same /64) as the
-    client obtained??  But that seems somewhat constraining.  Another
-    idea is "if you've seen this same certificate via another SSID",
-    but that doesn't work well, either:  for example, I have a single
-    DNS server in my house for all of my various SSIDs (guest, IoT,
-    home network, work network).  Hmm.  Need more ideas.
-
-
 # Avoiding Trust on First Use {#avoid-tofu}
 
 Trust on First Use can be avoided if the SSID name and DNS server's
@@ -211,22 +208,18 @@ name or address (e.g., Public WiFi hotspots;
 123-Main-Street.example.com, coffee-bar.example.com).
 
 
-
-# Common WiFi Names
-
-(( probably want to delete this section ))
-
-Some WiFi names are pretty common such as "Airport WiFi" or "Hotel WiFi"
-or "Guest" but are distinct networks with different WPA-PSK or are not
-using security at all ("open" networks).
-
-In other deployments, the same WiFi name is used in many locations
-around the world, such as branch offices of a corporation.
-
-
-
-
 # Security Considerations
+
+The network-designated resolver may or may not be local to the network.
+DDR is useful in deployments where the local network cannot be upgraded
+to host a encrypted resolver and the CPE cannot be upgraded to support DNR.
+For example, DDR is typically used to discover the ISP's encrypted resolver
+or a public encrypted resolver. The encrypted resolver discovered using DNR may
+be a public encrypted resolver or hosted by the local network or by the ISP.
+The proposed mechanism in this specification does not assist the client to
+identity if the network-designated resolver is hosted by the local network.
+However, it significantly reduces the attacker's capabilities if the attacker
+is operating a look-alike network.
 
 In near future, content delivery networks, sensitive domains and
 endpoints will migrate to TLS 1.3 and ECH.  If the attacker's network
@@ -234,10 +227,11 @@ conveys the same encrypted revolver's identity as the legitimate
 network, it will not have any visibility into the private and
 sensitive information about the target domain. However, the attacker's
 network will have visibility into the traffic metadata like
-destination IP address.
+destination IP address, sequence of packet lengths and inter-
+arrival times etc.
 
 The network authentication mechanism relies on an attacker's inability
-to obtain a signed certificate for the victim's domain name.
+to obtain a Web PKI certificate for the victim's domain name.
 
 
 
@@ -259,9 +253,9 @@ Several major smartphone operating systems support a QR code with the following 
 WIFI:T:WPA;S:example;P:password;;
 ~~~
 
-This could be extended to add a field containing the fingerprint of the encrypted DNS server
-certificate.  As several DNS servers can be included in the QR code with "D:", each DNS server with
-its own certificate using [RFC8792] line folding,
+This could be extended to add a field containing the fingerprint of the encrypted DNS server's identity.
+As several DNS servers can be included in the QR code with "D:", each DNS server with its own identity
+using [RFC8792] line folding,
 
 ~~~
 WIFI:T:WPA;S:example;P:password; \
