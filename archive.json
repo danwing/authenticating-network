@@ -1,6 +1,6 @@
 {
   "magic": "E!vIA5L86J2I",
-  "timestamp": "2022-08-30T02:07:23.473170+00:00",
+  "timestamp": "2022-09-01T01:51:24.359938+00:00",
   "repo": "danwing/authenticating-network",
   "labels": [
     {
@@ -169,21 +169,21 @@
       "id": "PR_kwDOH2YLqc49ibcY",
       "title": "Initial updates to the draft",
       "url": "https://github.com/danwing/authenticating-network/pull/8",
-      "state": "OPEN",
+      "state": "CLOSED",
       "author": "tireddy2",
       "authorAssociation": "COLLABORATOR",
       "assignees": [],
       "labels": [],
       "body": "",
       "createdAt": "2022-08-22T07:37:03Z",
-      "updatedAt": "2022-08-22T11:03:27Z",
+      "updatedAt": "2022-08-31T14:57:39Z",
       "baseRepository": "danwing/authenticating-network",
       "baseRefName": "main",
       "baseRefOid": "6f3592ef09c88be08699183bb20abb15de9fd77e",
       "headRepository": null,
       "headRefName": "main",
       "headRefOid": "24ab40a59626611ce02c1d55314b4171161cc678",
-      "closedAt": null,
+      "closedAt": "2022-08-31T14:57:39Z",
       "mergedAt": null,
       "mergedBy": null,
       "mergeCommit": null,
@@ -195,24 +195,388 @@
       "id": "PR_kwDOH2YLqc4-AHLF",
       "title": "Tiru's suggestions and Dan's edits",
       "url": "https://github.com/danwing/authenticating-network/pull/9",
-      "state": "OPEN",
+      "state": "MERGED",
       "author": "danwing",
       "authorAssociation": "OWNER",
       "assignees": [],
       "labels": [],
       "body": "",
       "createdAt": "2022-08-29T21:26:39Z",
-      "updatedAt": "2022-08-29T21:26:39Z",
+      "updatedAt": "2022-08-31T14:52:24Z",
       "baseRepository": "danwing/authenticating-network",
       "baseRefName": "main",
       "baseRefOid": "6f3592ef09c88be08699183bb20abb15de9fd77e",
       "headRepository": "danwing/authenticating-network",
       "headRefName": "moreChange",
-      "headRefOid": "5e6bb3df6ee594a3326b6bd4dcca73ed2ccf0667",
-      "closedAt": null,
-      "mergedAt": null,
-      "mergedBy": null,
-      "mergeCommit": null,
+      "headRefOid": "5b38874b374de8f888f5b73d3292435a49a9e84c",
+      "closedAt": "2022-08-31T14:52:24Z",
+      "mergedAt": "2022-08-31T14:52:24Z",
+      "mergedBy": "danwing",
+      "mergeCommit": {
+        "oid": "93f03baa727a18ee6d13253c09870afdbfa3bcc9"
+      },
+      "comments": [],
+      "reviews": [
+        {
+          "id": "PRR_kwDOH2YLqc5BEngj",
+          "commit": {
+            "abbreviatedOid": "5e6bb3d"
+          },
+          "author": "tireddy2",
+          "authorAssociation": "COLLABORATOR",
+          "state": "COMMENTED",
+          "body": "",
+          "createdAt": "2022-08-31T11:33:54Z",
+          "updatedAt": "2022-08-31T11:33:54Z",
+          "comments": [
+            {
+              "originalPosition": 31,
+              "body": "Replace \"encrypted DNS\" with \"encrypted DNS server's identity\"",
+              "createdAt": "2022-08-31T11:33:54Z",
+              "updatedAt": "2022-08-31T12:04:02Z"
+            }
+          ]
+        },
+        {
+          "id": "PRR_kwDOH2YLqc5BEqLz",
+          "commit": {
+            "abbreviatedOid": "5e6bb3d"
+          },
+          "author": "tireddy2",
+          "authorAssociation": "COLLABORATOR",
+          "state": "COMMENTED",
+          "body": "",
+          "createdAt": "2022-08-31T11:43:02Z",
+          "updatedAt": "2022-08-31T11:43:03Z",
+          "comments": [
+            {
+              "originalPosition": 120,
+              "body": "Both DNR and DDR specifications do not discuss any user validation. \r\n\r\nDNR relies on PKIX for validation of the DNS server certificate (see https://datatracker.ietf.org/doc/html/draft-ietf-add-dnr-13#section-3.3).  DDR also relies on PKIX validation but mandates the IP address of the Do53 server to be present in the TLS SubjectAltName. \r\n\r\nDNR has higher precedence than DDR. ",
+              "createdAt": "2022-08-31T11:43:03Z",
+              "updatedAt": "2022-08-31T11:43:03Z"
+            }
+          ]
+        },
+        {
+          "id": "PRR_kwDOH2YLqc5BEs-0",
+          "commit": {
+            "abbreviatedOid": "5e6bb3d"
+          },
+          "author": "tireddy2",
+          "authorAssociation": "COLLABORATOR",
+          "state": "COMMENTED",
+          "body": "",
+          "createdAt": "2022-08-31T11:53:05Z",
+          "updatedAt": "2022-08-31T11:53:05Z",
+          "comments": [
+            {
+              "originalPosition": 161,
+              "body": "I used key:value format with \";\" as a separator but JSON sounds good.  The format is implementation specific. ",
+              "createdAt": "2022-08-31T11:53:05Z",
+              "updatedAt": "2022-08-31T12:04:45Z"
+            }
+          ]
+        },
+        {
+          "id": "PRR_kwDOH2YLqc5BEtHn",
+          "commit": {
+            "abbreviatedOid": "5e6bb3d"
+          },
+          "author": "tireddy2",
+          "authorAssociation": "COLLABORATOR",
+          "state": "COMMENTED",
+          "body": "",
+          "createdAt": "2022-08-31T11:53:34Z",
+          "updatedAt": "2022-08-31T11:53:34Z",
+          "comments": [
+            {
+              "originalPosition": 174,
+              "body": "I don't see non-precise GPS coordinates in the above example.",
+              "createdAt": "2022-08-31T11:53:34Z",
+              "updatedAt": "2022-08-31T11:53:34Z"
+            }
+          ]
+        },
+        {
+          "id": "PRR_kwDOH2YLqc5BEvoM",
+          "commit": {
+            "abbreviatedOid": "5e6bb3d"
+          },
+          "author": "tireddy2",
+          "authorAssociation": "COLLABORATOR",
+          "state": "COMMENTED",
+          "body": "",
+          "createdAt": "2022-08-31T12:02:05Z",
+          "updatedAt": "2022-08-31T12:02:05Z",
+          "comments": [
+            {
+              "originalPosition": 182,
+              "body": "It may also indicate the network started using a different encrypted resolver. I think the client can then take appropriate action with assistance from the end-user and IT administrator. For example, the client could notify the end-user to contact the IT administrator to check if the network-provided DNS resolver has changed. ",
+              "createdAt": "2022-08-31T12:02:05Z",
+              "updatedAt": "2022-08-31T12:02:05Z"
+            }
+          ]
+        },
+        {
+          "id": "PRR_kwDOH2YLqc5BExZV",
+          "commit": {
+            "abbreviatedOid": "5e6bb3d"
+          },
+          "author": "tireddy2",
+          "authorAssociation": "COLLABORATOR",
+          "state": "COMMENTED",
+          "body": "",
+          "createdAt": "2022-08-31T12:08:17Z",
+          "updatedAt": "2022-08-31T12:08:18Z",
+          "comments": [
+            {
+              "originalPosition": 89,
+              "body": "Please add the following text:\r\n\r\nThe proposed mechanism is also useful in deployments using Opportunistic Wireless Encryption [RFC8110] and in LTE/5G mobile networks where the long-term key in the SIM card on the UE is compromised (Section 1 of [AKA]).\r\n\r\nnormative:\r\n  AKA:    I-D.ietf-emu-aka-pfs",
+              "createdAt": "2022-08-31T12:08:17Z",
+              "updatedAt": "2022-08-31T12:08:18Z"
+            }
+          ]
+        },
+        {
+          "id": "PRR_kwDOH2YLqc5BEyHm",
+          "commit": {
+            "abbreviatedOid": "5e6bb3d"
+          },
+          "author": "tireddy2",
+          "authorAssociation": "COLLABORATOR",
+          "state": "COMMENTED",
+          "body": "",
+          "createdAt": "2022-08-31T12:10:48Z",
+          "updatedAt": "2022-08-31T12:10:49Z",
+          "comments": [
+            {
+              "originalPosition": 204,
+              "body": "OLD:\r\n (e.g., 123-Main-Street.example.com, coffee-bar.example.com).\r\nNEW:\r\n (e.g., Public WiFi hotspots; 123-Main-Street.example.com, coffee-bar.example.com).",
+              "createdAt": "2022-08-31T12:10:49Z",
+              "updatedAt": "2022-08-31T12:10:49Z"
+            }
+          ]
+        },
+        {
+          "id": "PRR_kwDOH2YLqc5BE1Fe",
+          "commit": {
+            "abbreviatedOid": "5e6bb3d"
+          },
+          "author": "tireddy2",
+          "authorAssociation": "COLLABORATOR",
+          "state": "COMMENTED",
+          "body": "",
+          "createdAt": "2022-08-31T12:20:31Z",
+          "updatedAt": "2022-08-31T12:20:31Z",
+          "comments": [
+            {
+              "originalPosition": 218,
+              "body": "We may want to add the following text to the Security Considerations Section to show how the attacker's capability is diminished significantly:\r\n\r\nIn near future, content delivery networks, sensitive domains and endpoints will migrate to TLS 1.3 and ECH. \r\nIf the attacker's network conveys the same encrypted revolver's identity as the legitimate network, it will not have any visibility into the private and sensitive information about the target domain. However, the attacker's network will have visibility into the traffic metadata like destination IP address.\r\n\r\n",
+              "createdAt": "2022-08-31T12:20:31Z",
+              "updatedAt": "2022-08-31T12:20:31Z"
+            }
+          ]
+        },
+        {
+          "id": "PRR_kwDOH2YLqc5BE3tm",
+          "commit": {
+            "abbreviatedOid": "5e6bb3d"
+          },
+          "author": "tireddy2",
+          "authorAssociation": "COLLABORATOR",
+          "state": "COMMENTED",
+          "body": "",
+          "createdAt": "2022-08-31T12:28:39Z",
+          "updatedAt": "2022-08-31T12:28:40Z",
+          "comments": [
+            {
+              "originalPosition": 25,
+              "body": "We probably need a better title, how about \"Asserting a network connection using revolver's identity\" ?\r\nI suggest we pick a WG most likely add or OPSAWG (we can use the draft file name \r\n\"draft-wing-add-opsawg-authenticating-network\"",
+              "createdAt": "2022-08-31T12:28:40Z",
+              "updatedAt": "2022-08-31T12:28:40Z"
+            }
+          ]
+        },
+        {
+          "id": "PRR_kwDOH2YLqc5BE5C1",
+          "commit": {
+            "abbreviatedOid": "5e6bb3d"
+          },
+          "author": "tireddy2",
+          "authorAssociation": "COLLABORATOR",
+          "state": "COMMENTED",
+          "body": "Most of the changes look good.",
+          "createdAt": "2022-08-31T12:32:35Z",
+          "updatedAt": "2022-08-31T12:32:35Z",
+          "comments": []
+        },
+        {
+          "id": "PRR_kwDOH2YLqc5BFnD-",
+          "commit": {
+            "abbreviatedOid": "5e6bb3d"
+          },
+          "author": "danwing",
+          "authorAssociation": "OWNER",
+          "state": "COMMENTED",
+          "body": "",
+          "createdAt": "2022-08-31T14:28:37Z",
+          "updatedAt": "2022-08-31T14:28:37Z",
+          "comments": [
+            {
+              "originalPosition": 120,
+              "body": "ok, I came up with an edit to discuss on that point.",
+              "createdAt": "2022-08-31T14:28:37Z",
+              "updatedAt": "2022-08-31T14:28:37Z"
+            }
+          ]
+        },
+        {
+          "id": "PRR_kwDOH2YLqc5BFqHG",
+          "commit": {
+            "abbreviatedOid": "5e6bb3d"
+          },
+          "author": "danwing",
+          "authorAssociation": "OWNER",
+          "state": "COMMENTED",
+          "body": "",
+          "createdAt": "2022-08-31T14:35:42Z",
+          "updatedAt": "2022-08-31T14:35:42Z",
+          "comments": [
+            {
+              "originalPosition": 174,
+              "body": "I pulled the entire 'location' idea.  Reason:  consider an enterprise with offices around the world, each using the same network name, e.g., \"cisco corporate\", as a good example.  No matter where you go in the world as an employee, that's the network you see.\r\n\r\nWhile Cisco IT chose 802.1X, some other enterprise or smaller-ish company with lots of offices (office supply store, pizza franchise, etc.) could choose to use WPA-PSK.  \r\n\r\nThe same SSID appears in all of those networks.  Some, yes, might have their own encrypted DNS server in the branch office, with its own identity.  Such a deployment would break our I-D, I would argue by design of our I-D.  I don't see a fix for that.\r\n\r\nAdding GPS means those branch offices with the same SSID are deigned to not work.\r\n\r\n\r\nI have more thoughts on using location, but I don't have them articulated well yet.  \r\n\r\nBasically:  it feels premature to add 'location'.  The word doesn't exist in the doc at the moment.",
+              "createdAt": "2022-08-31T14:35:42Z",
+              "updatedAt": "2022-08-31T14:35:43Z"
+            }
+          ]
+        },
+        {
+          "id": "PRR_kwDOH2YLqc5BFsBU",
+          "commit": {
+            "abbreviatedOid": "5e6bb3d"
+          },
+          "author": "danwing",
+          "authorAssociation": "OWNER",
+          "state": "COMMENTED",
+          "body": "",
+          "createdAt": "2022-08-31T14:40:17Z",
+          "updatedAt": "2022-08-31T14:40:18Z",
+          "comments": [
+            {
+              "originalPosition": 182,
+              "body": "ok, adjusted to now read:\r\n\r\n... change of the\r\nnetwork's encrypted DNS server identity, or an Evil Twin\r\nattack.  The client can then take appropriate action.\r\n\r\n\r\nIt's awkward how the user would distinguish between the 'change of DNS identity' vs 'evil twin', though.  The age-old \"Server Identity changed.  Click OK to continue\" comes to mind!",
+              "createdAt": "2022-08-31T14:40:18Z",
+              "updatedAt": "2022-08-31T14:40:18Z"
+            }
+          ]
+        },
+        {
+          "id": "PRR_kwDOH2YLqc5BFsee",
+          "commit": {
+            "abbreviatedOid": "5e6bb3d"
+          },
+          "author": "danwing",
+          "authorAssociation": "OWNER",
+          "state": "COMMENTED",
+          "body": "",
+          "createdAt": "2022-08-31T14:41:22Z",
+          "updatedAt": "2022-08-31T14:41:23Z",
+          "comments": [
+            {
+              "originalPosition": 89,
+              "body": "added",
+              "createdAt": "2022-08-31T14:41:23Z",
+              "updatedAt": "2022-08-31T14:41:23Z"
+            }
+          ]
+        },
+        {
+          "id": "PRR_kwDOH2YLqc5BFs03",
+          "commit": {
+            "abbreviatedOid": "5e6bb3d"
+          },
+          "author": "danwing",
+          "authorAssociation": "OWNER",
+          "state": "COMMENTED",
+          "body": "",
+          "createdAt": "2022-08-31T14:42:10Z",
+          "updatedAt": "2022-08-31T14:42:11Z",
+          "comments": [
+            {
+              "originalPosition": 204,
+              "body": "adjusted",
+              "createdAt": "2022-08-31T14:42:11Z",
+              "updatedAt": "2022-08-31T14:42:11Z"
+            }
+          ]
+        },
+        {
+          "id": "PRR_kwDOH2YLqc5BFtIE",
+          "commit": {
+            "abbreviatedOid": "5e6bb3d"
+          },
+          "author": "danwing",
+          "authorAssociation": "OWNER",
+          "state": "COMMENTED",
+          "body": "",
+          "createdAt": "2022-08-31T14:42:52Z",
+          "updatedAt": "2022-08-31T14:42:53Z",
+          "comments": [
+            {
+              "originalPosition": 218,
+              "body": "added",
+              "createdAt": "2022-08-31T14:42:52Z",
+              "updatedAt": "2022-08-31T14:42:53Z"
+            }
+          ]
+        },
+        {
+          "id": "PRR_kwDOH2YLqc5BFuvt",
+          "commit": {
+            "abbreviatedOid": "5e6bb3d"
+          },
+          "author": "danwing",
+          "authorAssociation": "OWNER",
+          "state": "COMMENTED",
+          "body": "",
+          "createdAt": "2022-08-31T14:46:44Z",
+          "updatedAt": "2022-08-31T14:46:44Z",
+          "comments": [
+            {
+              "originalPosition": 25,
+              "body": "opsawg is perfect.  I was struggling where to aim this one.  Good idea.",
+              "createdAt": "2022-08-31T14:46:44Z",
+              "updatedAt": "2022-08-31T14:46:44Z"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "number": 10,
+      "id": "PR_kwDOH2YLqc4-I2cH",
+      "title": "shortened abbreviated title",
+      "url": "https://github.com/danwing/authenticating-network/pull/10",
+      "state": "MERGED",
+      "author": "danwing",
+      "authorAssociation": "OWNER",
+      "assignees": [],
+      "labels": [],
+      "body": "",
+      "createdAt": "2022-08-31T14:59:02Z",
+      "updatedAt": "2022-08-31T14:59:55Z",
+      "baseRepository": "danwing/authenticating-network",
+      "baseRefName": "main",
+      "baseRefOid": "93f03baa727a18ee6d13253c09870afdbfa3bcc9",
+      "headRepository": "danwing/authenticating-network",
+      "headRefName": "moreChange",
+      "headRefOid": "6611acf226eb6c1b1cddd860b4f27460e84338b5",
+      "closedAt": "2022-08-31T14:59:55Z",
+      "mergedAt": "2022-08-31T14:59:55Z",
+      "mergedBy": "danwing",
+      "mergeCommit": {
+        "oid": "02ffee704f203ed122aa413b5cbc66febf626986"
+      },
       "comments": [],
       "reviews": []
     }
