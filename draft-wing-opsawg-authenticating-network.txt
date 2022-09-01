@@ -328,8 +328,8 @@ Appendix A.  Extending WiFi QR Code
 
 Acknowledgments
 
-   This document was inspired by IETF review comments from Paul Wouters
-   and Wes Eddy.
+   This document was inspired by both Paul Wouters and Tommy Pauly
+   during review of other documents.
 
 Authors' Addresses
 
