@@ -153,10 +153,10 @@ the same network and their BSSIDs can be added to the list of BSSIDs
 for this SSID.
 
 If this is the first time connecting to that encrypted DNS server's
-identity, normal [DNR] or [DDR] procedures are followed, which will
-authenticate and authorize that encrypted DNS server's identity.
+identity, normal [DNR] or [DDR] validation procedures are followed, 
+which will authenticate and authorize that encrypted DNS server's identity.
 
-Better authentication can be performed byverifying the encrypted DNS
+Better authentication can be performed by verifying the encrypted DNS
 server's certificate with the fingerprint provided in an extended WiFi
 QR code ({{qr}}), consulting a crowd-sourced database, reputation
 system, or -- perhaps best -- using a matching SSID and SubjectAltName
