@@ -112,7 +112,7 @@ significant change in the encrypted DNS server configuration -- a
 strong indicator of an attacker operating the network.  The proposed
 mechanism is also useful in deployments using Opportunistic Wireless
 Encryption [RFC8110] and in LTE/5G mobile networks where the long-term
-key in the SIM card on the UE is compromised (Section 1 of [AKA]).
+key in the SIM card on the UE can be compromised (Section 1 of [AKA]).
 
 
 
@@ -133,27 +133,20 @@ The client can associate the network name with the encrypted DNS server's
 identity that was learned via [DNR] or [DDR]. The type of the network name is
 dependent on the access technology to which the endpoint is attached.
 For networks based on IEEE 802.11, the network name will be the SSID of
-the network and the Basic Service Set Identifier (BSSID). For 3GPP access-based networks, it
+the network and the PSK. The PSK is used along with SSID to uniquely identify the network to deal with common WiFi names such as
+"Airport WiFi" or "Hotel WiFi" or "Guest" but are distinct networks with different PSK. The combination of SSID and PSK is useful
+in deployments where the same WiFi name is used in many locations around the world, such as branch offices of a corporation.
+It is also useful in WiFi deployments that have multiple BSSIDs where 802.11r coordinates session keys amongst access points.
+However, in deployments using Opportunistic Wireless Encryption, the network name will be the SSID of the network
+and Basic Service Set Identifier (BSSID). For 3GPP access-based networks, it
 is the Public Land-based Mobile Network (PLMN) Identifier of the access network, and for 3GPP2 access,
 the network name is the Access-Network Identifier (see [RFC7839]).
 If DDR is used for discovery, the client would have to perform verified discovery (see Section 4.2 of [DDR])
 and the encrypted DNS server identity will be the encrypted DNS server's IP address.
 If DNR is used, the encrypted DNS server identity will be Authentication Domain Name (ADN).
 
-> todo: Improve the discussion, below, of multiple BSSIDs.  The
-  existing text handles joining and re-joining SSID+BSSID, but
-  how do we handle re-joining the same network with a not-seen-before
-  BSSID.  We should consider pros/cons of not using BSSID versus
-  solely using SSID.
-
-Some WiFi deployments have multiple BSSIDs where 802.11r coordinates
-session keys amongst access points.  When moving between such
-access points, re-authentication ensures those APs are part of
-the same network and their BSSIDs can be added to the list of BSSIDs
-for this SSID.
-
 If this is the first time connecting to that encrypted DNS server's
-identity, normal [DNR] or [DDR] validation procedures are followed, 
+identity, normal [DNR] or [DDR] validation procedures are followed,
 which will authenticate and authorize that encrypted DNS server's identity.
 
 Better authentication can be performed by verifying the encrypted DNS
@@ -162,29 +155,28 @@ QR code ({{qr}}), consulting a crowd-sourced database, reputation
 system, or -- perhaps best -- using a matching SSID and SubjectAltName
 described in {{avoid-tofu}}.
 
-After this step, the relationship of SSID, BSSID, encrypted resolver
+After this step, the relationship of SSID, PSK, encrypted resolver
 discovery mechanism, and SubjectAltName are stored on the client.
 
-
 For illustrative purpose, below is an example of the data stored for
-two WiFi networks, "Example WiFi" (showing one BSSID) and "Example2 WiFi"
-(showing two BSSIDs),
+two WiFi networks, "Example WiFi" and "Example2 WiFi" (showing hashed PSK)
+,
 
 ~~~
    { "networks": [{
         "SSID": "Example WiFi",
-        "BSSID": ["d8:c7:c8:44:32:40"],
+        "PSK": ["7786ff815d75063c530608d0aa87e405bfb999dde9d594754358b2d0"],
         "Discovery": "DNR",
         "Encrypted DNS": "resolver1.example.com"
    },{
         "SSID": "Example2 WiFi",
-        "BSSID": ["d8:c7:c8:44:32:49", "d8:c7:c8:44:32:50"],
+        "PSK": ["0fadf52a4580cfebb99e61162139af3d3a6403c1d36b83e4962b721d1c8cbd0b"],
         "Discovery": "DDR",
         "Encrypted DNS": ["8.8.8.8","1.1.1.1"]   }]}
 ~~~
 
 If this is not the first time connecting to this same SSID then the WiFi
-network name, BSSID, encrypted resolver disovery mechanism and
+network name, PSK, encrypted resolver disovery mechanism and
 encrypted DNS server's identity should all match for this
 re-connection.  If the encrypted DNS server's identity differs, this
 indicates a different network than expected -- either a different
