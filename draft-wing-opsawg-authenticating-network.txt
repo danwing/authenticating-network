@@ -232,13 +232,17 @@ Table of Contents
    conveys the same encrypted revolver's identity as the legitimate
    network, it will not have any visibility into the private and
    sensitive information about the target domain.  However, the
-   attacker's network will have visibility into the traffic metadata
-   like destination IP address, sequence of packet lengths and inter-
-   arrival times etc.
+   attacker's network will still have visibility into the traffic
+   metadata like destination IP address, sequence of packet lengths and
+   inter- arrival times etc.
 
    The network authentication mechanism relies on an attacker's
-   inability to obtain a Web PKI certificate for the victim's domain
-   name.
+   inability to obtain a Web PKI certificate for the victim's configured
+   encrypted DNS server.
+
+   The plain-text PSK is not necessary for the algorithm described in
+   this document; rather, an implementation can use a key identifier or
+   password-based KDF.
 
 6.  IANA Considerations
 
@@ -302,6 +306,10 @@ Table of Contents
               "Handling Long Lines in Content of Internet-Drafts and
               RFCs", RFC 8792, DOI 10.17487/RFC8792, June 2020,
               <https://www.rfc-editor.org/rfc/rfc8792>.
+
+   [scrypt]   Percival, C. and S. Josefsson, "The scrypt Password-Based
+              Key Derivation Function", RFC 7914, DOI 10.17487/RFC7914,
+              August 2016, <https://www.rfc-editor.org/rfc/rfc7914>.
 
 Appendix A.  Extending WiFi QR Code
 

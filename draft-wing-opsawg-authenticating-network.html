@@ -1338,11 +1338,15 @@ endpoints will migrate to TLS 1.3 and ECH.  If the attacker's network
 conveys the same encrypted revolver's identity as the legitimate
 network, it will not have any visibility into the private and
 sensitive information about the target domain. However, the attacker's
-network will have visibility into the traffic metadata like
+network will still have visibility into the traffic metadata like
 destination IP address, sequence of packet lengths and inter-
 arrival times etc.<a href="#section-5-2" class="pilcrow">¶</a></p>
 <p id="section-5-3">The network authentication mechanism relies on an attacker's inability
-to obtain a Web PKI certificate for the victim's domain name.<a href="#section-5-3" class="pilcrow">¶</a></p>
+to obtain a Web PKI certificate for the victim's configured encrypted DNS
+server.<a href="#section-5-3" class="pilcrow">¶</a></p>
+<p id="section-5-4">The plain-text PSK is not necessary for the algorithm described in this
+document; rather, an implementation can use a key identifier or password-based
+KDF.<a href="#section-5-4" class="pilcrow">¶</a></p>
 </section>
 </div>
 <div id="iana-considerations">
@@ -1406,8 +1410,12 @@ to obtain a Web PKI certificate for the victim's domain name.<a href="#section-5
 <span class="refAuthor">Harkins, D., Ed.</span> and <span class="refAuthor">W. Kumari, Ed.</span>, <span class="refTitle">"Opportunistic Wireless Encryption"</span>, <span class="seriesInfo">RFC 8110</span>, <span class="seriesInfo">DOI 10.17487/RFC8110</span>, <time datetime="2017-03" class="refDate">March 2017</time>, <span>&lt;<a href="https://www.rfc-editor.org/rfc/rfc8110">https://www.rfc-editor.org/rfc/rfc8110</a>&gt;</span>. </dd>
 <dd class="break"></dd>
 <dt id="RFC8792">[RFC8792]</dt>
-      <dd>
+        <dd>
 <span class="refAuthor">Watsen, K.</span>, <span class="refAuthor">Auerswald, E.</span>, <span class="refAuthor">Farrel, A.</span>, and <span class="refAuthor">Q. Wu</span>, <span class="refTitle">"Handling Long Lines in Content of Internet-Drafts and RFCs"</span>, <span class="seriesInfo">RFC 8792</span>, <span class="seriesInfo">DOI 10.17487/RFC8792</span>, <time datetime="2020-06" class="refDate">June 2020</time>, <span>&lt;<a href="https://www.rfc-editor.org/rfc/rfc8792">https://www.rfc-editor.org/rfc/rfc8792</a>&gt;</span>. </dd>
+<dd class="break"></dd>
+<dt id="scrypt">[scrypt]</dt>
+      <dd>
+<span class="refAuthor">Percival, C.</span> and <span class="refAuthor">S. Josefsson</span>, <span class="refTitle">"The scrypt Password-Based Key Derivation Function"</span>, <span class="seriesInfo">RFC 7914</span>, <span class="seriesInfo">DOI 10.17487/RFC7914</span>, <time datetime="2016-08" class="refDate">August 2016</time>, <span>&lt;<a href="https://www.rfc-editor.org/rfc/rfc7914">https://www.rfc-editor.org/rfc/rfc7914</a>&gt;</span>. </dd>
 <dd class="break"></dd>
 </dl>
 </section>
