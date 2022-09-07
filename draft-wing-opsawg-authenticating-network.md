@@ -62,6 +62,8 @@ informative:
   RFC8792: RFC8792
   RFC8110: RFC8110
   RFC7839: RFC7839
+  scrypt:  RFC7914
+
 
 --- abstract
 
@@ -218,14 +220,17 @@ endpoints will migrate to TLS 1.3 and ECH.  If the attacker's network
 conveys the same encrypted revolver's identity as the legitimate
 network, it will not have any visibility into the private and
 sensitive information about the target domain. However, the attacker's
-network will have visibility into the traffic metadata like
+network will still have visibility into the traffic metadata like
 destination IP address, sequence of packet lengths and inter-
 arrival times etc.
 
 The network authentication mechanism relies on an attacker's inability
-to obtain a Web PKI certificate for the victim's domain name.
+to obtain a Web PKI certificate for the victim's configured encrypted DNS
+server.
 
-
+The plain-text PSK is not necessary for the algorithm described in this
+document; rather, an implementation can use a key identifier or password-based
+KDF.
 
 # IANA Considerations
 
