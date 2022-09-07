@@ -159,20 +159,20 @@ After this step, the relationship of SSID, PSK, encrypted resolver
 discovery mechanism, and SubjectAltName are stored on the client.
 
 For illustrative purpose, below is an example of the data stored for
-two WiFi networks, "Example WiFi" and "Example2 WiFi" (showing hashed PSK)
-,
+two WiFi networks, "Example WiFi" and "Example2 WiFi" (showing hashed
+PSK),
 
 ~~~
-   { "networks": [{
-        "SSID": "Example WiFi",
-        "PSK": ["7786ff815d75063c530608d0aa87e405bfb999dde9d594754358b2d0"],
-        "Discovery": "DNR",
-        "Encrypted DNS": "resolver1.example.com"
-   },{
-        "SSID": "Example2 WiFi",
-        "PSK": ["0fadf52a4580cfebb99e61162139af3d3a6403c1d36b83e4962b721d1c8cbd0b"],
-        "Discovery": "DDR",
-        "Encrypted DNS": ["8.8.8.8","1.1.1.1"]   }]}
+ { "networks": [{
+    "SSID": "Example WiFi",
+    "PSK": "7786ff815d75063c530608d0aa87e405bfb999dde9d594754358b2d0",
+    "Discovery": "DNR",
+    "Encrypted DNS": "resolver1.example.com"
+ },{
+    "SSID": "Example2 WiFi",
+    "PSK": "75K3eLr+dx6JJFuJ7LwIpEpOFmwGZZkRiB84PURz6U8=",
+    "Discovery": "DDR",
+    "Encrypted DNS": ["8.8.8.8","1.1.1.1"]   }]}
 ~~~
 
 If this is not the first time connecting to this same SSID then the WiFi
