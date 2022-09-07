@@ -5,8 +5,8 @@
 Operations and Management Area Working Group                     D. Wing
 Internet-Draft                                                    Citrix
 Intended status: Informational                                  T. Reddy
-Expires: 10 March 2023                                             Nokia
-                                                        6 September 2022
+Expires: 11 March 2023                                             Nokia
+                                                        7 September 2022
 
 
         Asserting a network connection using revolver's identity
@@ -46,7 +46,7 @@ Status of This Memo
    time.  It is inappropriate to use Internet-Drafts as reference
    material or to cite them other than as "work in progress."
 
-   This Internet-Draft will expire on 10 March 2023.
+   This Internet-Draft will expire on 11 March 2023.
 
 Copyright Notice
 
@@ -176,18 +176,18 @@ Table of Contents
 
    For illustrative purpose, below is an example of the data stored for
    two WiFi networks, "Example WiFi" and "Example2 WiFi" (showing hashed
-   PSK) ,
+   PSK),
 
    { "networks": [{
-        "SSID": "Example WiFi",
-        "PSK": ["7786ff815d75063c530608d0aa87e405bfb999dde9d594754358b2d0"],
-        "Discovery": "DNR",
-        "Encrypted DNS": "resolver1.example.com"
+      "SSID": "Example WiFi",
+      "PSK": "7786ff815d75063c530608d0aa87e405bfb999dde9d594754358b2d0",
+      "Discovery": "DNR",
+      "Encrypted DNS": "resolver1.example.com"
    },{
-        "SSID": "Example2 WiFi",
-        "PSK": ["0fadf52a4580cfebb99e61162139af3d3a6403c1d36b83e4962b721d1c8cbd0b"],
-        "Discovery": "DDR",
-        "Encrypted DNS": ["8.8.8.8","1.1.1.1"]   }]}
+      "SSID": "Example2 WiFi",
+      "PSK": "75K3eLr+dx6JJFuJ7LwIpEpOFmwGZZkRiB84PURz6U8=",
+      "Discovery": "DDR",
+      "Encrypted DNS": ["8.8.8.8","1.1.1.1"]   }]}
 
    If this is not the first time connecting to this same SSID then the
    WiFi network name, PSK, encrypted resolver disovery mechanism and
