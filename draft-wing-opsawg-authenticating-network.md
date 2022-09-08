@@ -68,7 +68,7 @@ informative:
 --- abstract
 
 This document describes how a host uses the encrypted DNS server identity to reduce
-an attacker's capabilities if the attacker is emulating a wireless network. 
+an attacker's capabilities if the attacker is emulating a wireless network.
 
 --- middle
 
@@ -84,7 +84,7 @@ and unavailable on LTE and 5G networks -- and often applications are
 unaware if the underlying network was protected with 802.1X.
 
 An attacker can operate a rogue WLAN access point
-with the same SSID and WPA-PSK as the victim network [Evil-Twin].  Also, 
+with the same SSID and WPA-PSK as the victim network [Evil-Twin].  Also,
 there are many deployments (for example, coffee shops and bars) that offer free Wi-Fi
 as a customer incentive.  Since these businesses are not
 Internet service providers, they are often unwilling and/or
@@ -110,7 +110,7 @@ network. In cases where the local network provides its own encrypted
 DNS server, the client can even ensure it has re-connected to the same
 network, offering the client enough information to positively detect a
 significant change in the encrypted DNS server configuration -- a
-strong indicator of an attacker operating the network.  
+strong indicator of an attacker operating the network.
 
 The proposed
 mechanism is also useful in deployments using Opportunistic Wireless
@@ -119,11 +119,11 @@ key in the SIM card on the UE can be compromised (Section 1 of [AKA]).
 
 The theory of operation is described mainly from the perspective of a host that connects to a network. Further interactions may be considered
 to seek for specific actions from a user (e.g., consent, validation). Whether and how such interactions are supported is implementation-specific and are, as such,
-out of scope. 
+out of scope.
 
 The document assumes that the host supports at least one encrypted DNS scheme (e.g., DNS over TLS or DNS over HTTPS).
 
-The current version of the specification focuses on wirless networks. The applicability to other network types may be assessed in future versions. 
+The current version of the specification focuses on wirless networks. The applicability to other network types may be assessed in future versions.
 
 # Conventions and Definitions
 
@@ -261,7 +261,7 @@ This document has no IANA actions.
 
 # Extending WiFi QR Code {#qr}
 
-This section is non-normative and merely explains how extending the Wi-Fi QR code could work.  
+This section is non-normative and merely explains how extending the Wi-Fi QR code could work.
 
 QR codes come with their
 own security risks, most signficant that an attacker can place their own QR code over a legitimate QR code.
