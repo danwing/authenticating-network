@@ -23,6 +23,8 @@ venue:
   github: "danwing/authenticating-network"
   latest: "https://danwing.github.io/authenticating-network/draft-wing-authenticating-network.html"
 
+
+
 author:
  -
     ins: D. Wing
@@ -62,7 +64,7 @@ informative:
   RFC8792: RFC8792
   RFC8110: RFC8110
   RFC7839: RFC7839
-  scrypt:  RFC7914
+
 
 
 --- abstract
@@ -161,24 +163,23 @@ After this step, the relationship of SSID, PSK, encrypted resolver
 discovery mechanism, and SubjectAltName are stored on the client.
 
 For illustrative purpose, below is an example of the data stored for
-two WiFi networks, "Example WiFi" and "Example2 WiFi" (showing hashed
-PSK),
+two WiFi networks, "Example WiFi" and "Example2 WiFi",
 
 ~~~
- { "networks": [{
-    "SSID": "Example WiFi",
-    "PSK": "7786ff815d75063c530608d0aa87e405bfb999dde9d594754358b2d0",
-    "Discovery": "DNR",
-    "Encrypted DNS": "resolver1.example.com"
- },{
-    "SSID": "Example2 WiFi",
-    "PSK": "75K3eLr+dx6JJFuJ7LwIpEpOFmwGZZkRiB84PURz6U8=",
-    "Discovery": "DDR",
-    "Encrypted DNS": ["8.8.8.8","1.1.1.1"]   }]}
+   { "networks": [{
+       "SSID": "Example WiFi",
+       "PSK-ID": 12,
+       "Discovery": "DNR",
+       "Encrypted DNS": ["resolver1.example.com"]
+   },{
+       "SSID": "Example2 WiFi",
+       "PSK-ID": 42,
+       "Discovery": "DDR",
+       "Encrypted DNS": ["8.8.8.8","1.1.1.1"]   }]}
 ~~~
 
 If this is not the first time connecting to this same SSID then the WiFi
-network name, PSK, encrypted resolver disovery mechanism and
+network name, PSK identifier, encrypted resolver disovery mechanism and
 encrypted DNS server's identity should all match for this
 re-connection.  If the encrypted DNS server's identity differs, this
 indicates a different network than expected -- either a different
@@ -228,9 +229,10 @@ The network authentication mechanism relies on an attacker's inability
 to obtain a Web PKI certificate for the victim's configured encrypted DNS
 server.
 
-The plain-text PSK is not necessary for the algorithm described in this
-document; rather, an implementation can use a key identifier or password-based
-KDF.
+Neither a plain-text PSK nor hash of the PSK is necessary for the
+mechanism described in this document; rather, an implementation can
+use a key identifier.
+
 
 # IANA Considerations
 
