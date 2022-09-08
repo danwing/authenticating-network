@@ -23,6 +23,8 @@ venue:
   github: "danwing/authenticating-network"
   latest: "https://danwing.github.io/authenticating-network/draft-wing-authenticating-network.html"
 
+
+
 author:
  -
     ins: D. Wing
@@ -61,7 +63,6 @@ informative:
   RFC8792: RFC8792
   RFC8110: RFC8110
   RFC7839: RFC7839
-  scrypt:  RFC7914
   AKA:    I-D.ietf-emu-aka-pfs
 
 --- abstract
@@ -175,13 +176,13 @@ PSK),
   "networks": [
     {
       "SSID": "Example WiFi 1",
-      "PSK": "7786ff815d75063c530608d0aa87e405bfb999dde9d594754358b2d0",
+      "PSK-ID": 12,
       "Discovery": "DNR",
       "Encrypted DNS": "resolver1.example.com"
     },
     {
       "SSID": "Example WiFi 2",
-      "PSK": "75K3eLr+dx6JJFuJ7LwIpEpOFmwGZZkRiB84PURz6U8=",
+      "PSK-ID": 42,
       "Discovery": "DDR",
       "Encrypted DNS": [
         "192.0.2.1",
@@ -193,8 +194,9 @@ PSK),
 ~~~
 {: #example title="An Example of Data Stored for Two Networks"}
 
+
 If this is not the first time the host connects to this same SSID, then the Wi-Fi
-network name, PSK, encrypted resolver disovery mechanism, and
+network name, PSK identifier, encrypted resolver disovery mechanism, and
 encrypted DNS server's identity should all match for this
 re-connection.  If the encrypted DNS server's identity differs, this
 indicates a different network than expected -- either a different
@@ -244,9 +246,11 @@ The network authentication mechanism relies upon an attacker's inability
 to obtain an application PKI certificate for the victim's configured encrypted DNS
 server.
 
-The plain-text PSK is not necessary for the validation procedure described in this
-document; rather, an implementation can use a key identifier or password-based
-KDF.
+
+Neither a plain-text PSK nor hash of the PSK is necessary for the
+mechanism described in this document; rather, an implementation can
+use a key identifier.
+
 
 # IANA Considerations
 
