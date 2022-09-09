@@ -1,6 +1,6 @@
 ---
 title: "Asserting Wireless Network Connections Using DNS Revolvers' Identities"
-abbrev: "Network connection using resolver"
+abbrev: "Resolver-based Network Identity Assertion"
 category: info
 
 docname: draft-wing-opsawg-authenticating-network-latest
@@ -78,14 +78,13 @@ an attacker's capabilities if the attacker is emulating a wireless network.
 When a user connects to a wireless network the user
 or their device want to be sure the connection is to the expected
 network, as different networks provide different services in terms of
-performance, security, access to split-horizon DNS servers, and so on.  Although 802.1X provides layer 2
-security for both Ethernet and Wi-Fi networks, 802.1X is not widely deployed
-and unavailable on LTE and 5G networks -- and often applications are
+performance, security, access to split-horizon DNS servers, and so on.  Although 802.1X provides Layer 2
+security for both Ethernet and Wi-Fi networks, 802.1X is not widely deployed -- and often applications are
 unaware if the underlying network was protected with 802.1X.
 
 An attacker can operate a rogue WLAN access point
-with the same SSID and WPA-PSK as the victim network [Evil-Twin].  Also,
-there are many deployments (for example, coffee shops and bars) that offer free Wi-Fi
+with the same SSID and WPA-PSK as a victim's network [Evil-Twin].  Also,
+there are many deployments (for example, coffee shops and bars) that offer free Wi-Fi connectivity
 as a customer incentive.  Since these businesses are not
 Internet service providers, they are often unwilling and/or
 unqualified to perform advanced (sometimes, complex) configuration on their network.  In
@@ -98,8 +97,8 @@ PSK is used in a cryptographic handshake, defined in [IEEE802.11],
 called the "4-way handshake" to prove knowledge of the PSK and derive
 traffic encryption keys for bulk wireless data. The same deployement
 technique is typically used in residential or small office/home office
-networks. If the PSK for wireless authentication is
-the same for all clients that connect to the same WLAN, the shared key
+networks. If the PSK for the wireless authentication is
+the same for all devices that connect to the same WLAN, the shared key
 will be available to all nodes, including attackers, so it is possible
 to mount an active on-path attack.
 
@@ -133,7 +132,7 @@ The current version of the specification focuses on wirless networks. The applic
 # Theory of Operation
 
 A host connects to a network and obtains network-related information via DHCPv4, DHCPv6, or RA.
-The network indicates its encrypted DNS server using either [DNR] or [DDR]. If hosts supports an encrypted DNS scheme that is advertised by the network, the host then connects
+The network indicates its encrypted DNS server using either [DNR] or [DDR]. If the host supports an encrypted DNS scheme that is advertised by the network, the host then connects
 to at least one of the designated encrypted DNS servers, completes the TLS handshake, and performs public key validation of
 the presented certificate following conventional procedures.
 
@@ -233,6 +232,14 @@ identity if the network-designated resolver is hosted by the local network.
 However, it significantly reduces the attacker's capabilities if the attacker
 is emulating a network (that is, operating a look-alike network).
 
+A misbehaving node can mirror the legitimate DNS information of the expected
+network. That node won't be detected using the mechanism defined in this 
+document. However, the misbehaving node won't access the content of the DNS 
+traffic as it is ecnrypted. Still, the misbehaving node can perform other 
+attacks once it is involved on-path (e.g. block DNS traffic to force a fall-back
+to Do53). The proposed mechanism does not provide additional benifits compared
+to simply configuring a trusted encrypted resolver.
+
 More and more content delivery networks, sensitive domains and
 endpoints are migrating to TLS 1.3 and ECH.  If the attacker's network
 conveys the same encrypted revolver's identity as the legitimate
@@ -245,7 +252,6 @@ arrival times, etc.
 The network authentication mechanism relies upon an attacker's inability
 to obtain an application PKI certificate for the victim's configured encrypted DNS
 server.
-
 
 Neither a plain-text PSK nor hash of the PSK is necessary for the
 mechanism described in this document; rather, an implementation can
