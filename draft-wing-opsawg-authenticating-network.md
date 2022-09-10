@@ -192,7 +192,31 @@ PSK),
   ]
 }
 ~~~
-{: #example title="An Example of Data Stored for Two Networks"}
+{: #example title="An Example of Data Stored for Two WiFi Networks"}
+
+For illustrative purposes, {{example2}} provides an example of the data stored for
+two 3GPP2 networks, 
+
+~~~
+{
+  "networks": [
+    {
+      "realm": "ims.mnc015.mcc234.3gppnetwork.org",
+      "Discovery": "DNR",
+      "Encrypted DNS": "resolver2.example.com"
+    },
+    {
+      "realm": "ims.mnc016.mcc235.3gppnetwork.org",
+      "Discovery": "DDR",
+      "Encrypted DNS": [
+        "192.0.2.7",
+        "198.51.100.8"
+      ]
+    }
+  ]
+}
+~~~
+{: #example2 title="An Example of Data Stored for Two 3GPP2 Networks"}
 
 
 If this is not the first time the host connects to this same SSID, then the Wi-Fi
