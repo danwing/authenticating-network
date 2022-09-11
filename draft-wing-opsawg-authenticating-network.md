@@ -185,8 +185,8 @@ PSK),
       "PSK-ID": 42,
       "Discovery": "DDR",
       "Encrypted DNS": [
-        "192.0.2.1",
-        "198.51.100.5"
+           "8.8.8.8",
+           "1.1.1.1"
       ]
     }
   ]
@@ -209,8 +209,8 @@ two 3GPP2 networks,
       "realm": "ims.mnc016.mcc235.3gppnetwork.org",
       "Discovery": "DDR",
       "Encrypted DNS": [
-        "192.0.2.7",
-        "198.51.100.8"
+           "8.8.8.8",
+           "1.1.1.1"
       ]
     }
   ]
