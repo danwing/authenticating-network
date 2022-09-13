@@ -1,6 +1,6 @@
 ---
 title: "Asserting Wireless Network Connections Using DNS Revolvers' Identities"
-abbrev: "Resolver-based Network Identity"
+abbrev: "Resolver-based Network Identity Assertion"
 category: info
 
 docname: draft-wing-opsawg-authenticating-network-latest
@@ -85,8 +85,8 @@ unaware if the underlying network was protected with 802.1X.
 
 An attacker can operate a rogue WLAN access point
 with the same SSID and WPA-PSK as a victim's network [Evil-Twin].  Also,
-there are many deployments (for example, coffee shops and bars) that offer free Wi-Fi
-connectivity as a customer incentive.  Since these businesses are not
+there are many deployments (for example, coffee shops and bars) that offer free Wi-Fi connectivity
+as a customer incentive.  Since these businesses are not
 Internet service providers, they are often unwilling and/or
 unqualified to perform advanced (sometimes, complex) configuration on their network.  In
 addition, customers are generally unwilling to do complicated
@@ -269,7 +269,6 @@ arrival times, etc.
 The network authentication mechanism relies upon an attacker's inability
 to obtain an application PKI certificate for the victim's configured encrypted DNS
 server.
-
 
 Neither a plain-text PSK nor hash of the PSK is necessary for the
 mechanism described in this document; rather, an implementation can
