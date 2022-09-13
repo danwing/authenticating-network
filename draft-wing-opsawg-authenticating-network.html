@@ -1189,8 +1189,9 @@ an attacker's capabilities if the attacker is emulating a wireless network.<a hr
 <p id="section-1-1">When a user connects to a wireless network the user
 or their device want to be sure the connection is to the expected
 network, as different networks provide different services in terms of
-performance, security, access to split-horizon DNS servers, and so on.  Although 802.1X provides Layer 2
-security for both Ethernet and Wi-Fi networks, 802.1X is not widely deployed -- and often applications are
+performance, security, access to split-horizon DNS servers, and so on.  Although 802.1X provides layer 2
+security for both Ethernet and Wi-Fi networks, 802.1X is not widely deployed
+-- and often applications are
 unaware if the underlying network was protected with 802.1X.<a href="#section-1-1" class="pilcrow">¶</a></p>
 <p id="section-1-2">An attacker can operate a rogue WLAN access point
 with the same SSID and WPA-PSK as a victim's network <span>[<a href="#Evil-Twin" class="xref">Evil-Twin</a>]</span>.  Also,
@@ -1294,8 +1295,8 @@ PSK),<a href="#section-3-8" class="pilcrow">¶</a></p>
       "PSK-ID": 42,
       "Discovery": "DDR",
       "Encrypted DNS": [
-        "192.0.2.1",
-        "198.51.100.5"
+           "8.8.8.8",
+           "1.1.1.1"
       ]
     }
   ]
@@ -1303,17 +1304,46 @@ PSK),<a href="#section-3-8" class="pilcrow">¶</a></p>
 </pre>
 </div>
 <figcaption><a href="#figure-1" class="selfRef">Figure 1</a>:
-<a href="#name-an-example-of-data-stored-f" class="selfRef">An Example of Data Stored for Two Networks</a>
+<a href="#name-an-example-of-data-stored-f" class="selfRef">An Example of Data Stored for Two WiFi Networks</a>
         </figcaption></figure>
 </div>
-<p id="section-3-10">If this is not the first time the host connects to this same SSID, then the Wi-Fi
+<p id="section-3-10">For illustrative purposes, <a href="#example2" class="xref">Figure 2</a> provides an example of the data stored for
+two 3GPP2 networks,<a href="#section-3-10" class="pilcrow">¶</a></p>
+<span id="name-an-example-of-data-stored-fo"></span><div id="example2">
+<figure id="figure-2">
+        <div class="alignLeft art-text artwork" id="section-3-11.1">
+<pre>
+{
+  "networks": [
+    {
+      "realm": "ims.mnc015.mcc234.3gppnetwork.org",
+      "Discovery": "DNR",
+      "Encrypted DNS": "resolver2.example.com"
+    },
+    {
+      "realm": "ims.mnc016.mcc235.3gppnetwork.org",
+      "Discovery": "DDR",
+      "Encrypted DNS": [
+           "8.8.8.8",
+           "1.1.1.1"
+      ]
+    }
+  ]
+}
+</pre>
+</div>
+<figcaption><a href="#figure-2" class="selfRef">Figure 2</a>:
+<a href="#name-an-example-of-data-stored-fo" class="selfRef">An Example of Data Stored for Two 3GPP2 Networks</a>
+        </figcaption></figure>
+</div>
+<p id="section-3-12">If this is not the first time the host connects to this same SSID, then the Wi-Fi
 network name, PSK identifier, encrypted resolver disovery mechanism, and
 encrypted DNS server's identity should all match for this
 re-connection.  If the encrypted DNS server's identity differs, this
 indicates a different network than expected -- either a different
 network (that happens to also use the same SSID), change of the
 network's encrypted DNS server identity, or an Evil Twin
-attack. The host and/or the user can then take appropriate actions.<a href="#section-3-10" class="pilcrow">¶</a></p>
+attack. The host and/or the user can then take appropriate actions.<a href="#section-3-12" class="pilcrow">¶</a></p>
 </section>
 </div>
 <div id="avoid-tofu">
