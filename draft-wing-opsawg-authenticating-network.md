@@ -1,6 +1,6 @@
 ---
 title: "Asserting Wireless Network Connections Using DNS Revolvers' Identities"
-abbrev: "Network connection using resolver"
+abbrev: "Resolver-based Network Identity"
 category: info
 
 docname: draft-wing-opsawg-authenticating-network-latest
@@ -80,13 +80,13 @@ or their device want to be sure the connection is to the expected
 network, as different networks provide different services in terms of
 performance, security, access to split-horizon DNS servers, and so on.  Although 802.1X provides layer 2
 security for both Ethernet and Wi-Fi networks, 802.1X is not widely deployed
-and unavailable on LTE and 5G networks -- and often applications are
+-- and often applications are
 unaware if the underlying network was protected with 802.1X.
 
 An attacker can operate a rogue WLAN access point
-with the same SSID and WPA-PSK as the victim network [Evil-Twin].  Also,
+with the same SSID and WPA-PSK as a victim's network [Evil-Twin].  Also,
 there are many deployments (for example, coffee shops and bars) that offer free Wi-Fi
-as a customer incentive.  Since these businesses are not
+connectivity as a customer incentive.  Since these businesses are not
 Internet service providers, they are often unwilling and/or
 unqualified to perform advanced (sometimes, complex) configuration on their network.  In
 addition, customers are generally unwilling to do complicated
@@ -98,8 +98,8 @@ PSK is used in a cryptographic handshake, defined in [IEEE802.11],
 called the "4-way handshake" to prove knowledge of the PSK and derive
 traffic encryption keys for bulk wireless data. The same deployement
 technique is typically used in residential or small office/home office
-networks. If the PSK for wireless authentication is
-the same for all clients that connect to the same WLAN, the shared key
+networks. If the PSK for the wireless authentication is
+the same for all devices that connect to the same WLAN, the shared key
 will be available to all nodes, including attackers, so it is possible
 to mount an active on-path attack.
 
@@ -133,7 +133,7 @@ The current version of the specification focuses on wirless networks. The applic
 # Theory of Operation
 
 A host connects to a network and obtains network-related information via DHCPv4, DHCPv6, or RA.
-The network indicates its encrypted DNS server using either [DNR] or [DDR]. If hosts supports an encrypted DNS scheme that is advertised by the network, the host then connects
+The network indicates its encrypted DNS server using either [DNR] or [DDR]. If the host supports an encrypted DNS scheme that is advertised by the network, the host then connects
 to at least one of the designated encrypted DNS servers, completes the TLS handshake, and performs public key validation of
 the presented certificate following conventional procedures.
 
@@ -195,7 +195,7 @@ PSK),
 {: #example title="An Example of Data Stored for Two WiFi Networks"}
 
 For illustrative purposes, {{example2}} provides an example of the data stored for
-two 3GPP2 networks, 
+two 3GPP2 networks,
 
 ~~~
 {
