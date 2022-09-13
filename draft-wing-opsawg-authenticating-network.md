@@ -78,8 +78,9 @@ an attacker's capabilities if the attacker is emulating a wireless network.
 When a user connects to a wireless network the user
 or their device want to be sure the connection is to the expected
 network, as different networks provide different services in terms of
-performance, security, access to split-horizon DNS servers, and so on.  Although 802.1X provides Layer 2
-security for both Ethernet and Wi-Fi networks, 802.1X is not widely deployed -- and often applications are
+performance, security, access to split-horizon DNS servers, and so on.  Although 802.1X provides layer 2
+security for both Ethernet and Wi-Fi networks, 802.1X is not widely deployed
+-- and often applications are
 unaware if the underlying network was protected with 802.1X.
 
 An attacker can operate a rogue WLAN access point
@@ -184,14 +185,38 @@ PSK),
       "PSK-ID": 42,
       "Discovery": "DDR",
       "Encrypted DNS": [
-        "192.0.2.1",
-        "198.51.100.5"
+           "8.8.8.8",
+           "1.1.1.1"
       ]
     }
   ]
 }
 ~~~
-{: #example title="An Example of Data Stored for Two Networks"}
+{: #example title="An Example of Data Stored for Two WiFi Networks"}
+
+For illustrative purposes, {{example2}} provides an example of the data stored for
+two 3GPP2 networks,
+
+~~~
+{
+  "networks": [
+    {
+      "realm": "ims.mnc015.mcc234.3gppnetwork.org",
+      "Discovery": "DNR",
+      "Encrypted DNS": "resolver2.example.com"
+    },
+    {
+      "realm": "ims.mnc016.mcc235.3gppnetwork.org",
+      "Discovery": "DDR",
+      "Encrypted DNS": [
+           "8.8.8.8",
+           "1.1.1.1"
+      ]
+    }
+  ]
+}
+~~~
+{: #example2 title="An Example of Data Stored for Two 3GPP2 Networks"}
 
 
 If this is not the first time the host connects to this same SSID, then the Wi-Fi
