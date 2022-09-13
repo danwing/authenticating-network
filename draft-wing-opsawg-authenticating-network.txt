@@ -5,8 +5,8 @@
 Operations and Management Area Working Group                     D. Wing
 Internet-Draft                                                    Citrix
 Intended status: Informational                                  T. Reddy
-Expires: 12 March 2023                                             Nokia
-                                                        8 September 2022
+Expires: 17 March 2023                                             Nokia
+                                                       13 September 2022
 
 
  Asserting Wireless Network Connections Using DNS Revolvers' Identities
@@ -46,7 +46,7 @@ Status of This Memo
    time.  It is inappropriate to use Internet-Drafts as reference
    material or to cite them other than as "work in progress."
 
-   This Internet-Draft will expire on 12 March 2023.
+   This Internet-Draft will expire on 17 March 2023.
 
 Copyright Notice
 
@@ -83,30 +83,30 @@ Table of Contents
    want to be sure the connection is to the expected network, as
    different networks provide different services in terms of
    performance, security, access to split-horizon DNS servers, and so
-   on.  Although 802.1X provides layer 2 security for both Ethernet and
-   Wi-Fi networks, 802.1X is not widely deployed and unavailable on LTE
-   and 5G networks -- and often applications are unaware if the
-   underlying network was protected with 802.1X.
+   on.  Although 802.1X provides Layer 2 security for both Ethernet and
+   Wi-Fi networks, 802.1X is not widely deployed -- and often
+   applications are unaware if the underlying network was protected with
+   802.1X.
 
    An attacker can operate a rogue WLAN access point with the same SSID
-   and WPA-PSK as the victim network [Evil-Twin].  Also, there are many
+   and WPA-PSK as a victim's network [Evil-Twin].  Also, there are many
    deployments (for example, coffee shops and bars) that offer free Wi-
-   Fi as a customer incentive.  Since these businesses are not Internet
-   service providers, they are often unwilling and/or unqualified to
-   perform advanced (sometimes, complex) configuration on their network.
-   In addition, customers are generally unwilling to do complicated
-   provisioning on their devices just to obtain free Wi-Fi.  This leads
-   to a popular deployment technique -- a network protected using a
-   shared and public Pre-Shared Key (PSK) that is printed on a sandwich
-   board at the entrance, on a chalkboard on the wall or on a menu.  The
-   PSK is used in a cryptographic handshake, defined in [IEEE802.11],
-   called the "4-way handshake" to prove knowledge of the PSK and derive
-   traffic encryption keys for bulk wireless data.  The same deployement
-   technique is typically used in residential or small office/home
-   office networks.  If the PSK for wireless authentication is the same
-   for all clients that connect to the same WLAN, the shared key will be
-   available to all nodes, including attackers, so it is possible to
-   mount an active on-path attack.
+   Fi connectivity as a customer incentive.  Since these businesses are
+   not Internet service providers, they are often unwilling and/or
+   unqualified to perform advanced (sometimes, complex) configuration on
+   their network.  In addition, customers are generally unwilling to do
+   complicated provisioning on their devices just to obtain free Wi-Fi.
+   This leads to a popular deployment technique -- a network protected
+   using a shared and public Pre-Shared Key (PSK) that is printed on a
+   sandwich board at the entrance, on a chalkboard on the wall or on a
+   menu.  The PSK is used in a cryptographic handshake, defined in
+   [IEEE802.11], called the "4-way handshake" to prove knowledge of the
+   PSK and derive traffic encryption keys for bulk wireless data.  The
+   same deployement technique is typically used in residential or small
+   office/home office networks.  If the PSK for the wireless
+   authentication is the same for all devices that connect to the same
+   WLAN, the shared key will be available to all nodes, including
+   attackers, so it is possible to mount an active on-path attack.
 
    This document describes how a wireless client can utilize network-
    advertised encrypted DNS servers to ensure that the attacker has no
@@ -147,11 +147,11 @@ Table of Contents
 
    A host connects to a network and obtains network-related information
    via DHCPv4, DHCPv6, or RA.  The network indicates its encrypted DNS
-   server using either [DNR] or [DDR].  If hosts supports an encrypted
-   DNS scheme that is advertised by the network, the host then connects
-   to at least one of the designated encrypted DNS servers, completes
-   the TLS handshake, and performs public key validation of the
-   presented certificate following conventional procedures.
+   server using either [DNR] or [DDR].  If the host supports an
+   encrypted DNS scheme that is advertised by the network, the host then
+   connects to at least one of the designated encrypted DNS servers,
+   completes the TLS handshake, and performs public key validation of
+   the presented certificate following conventional procedures.
 
    The host can associate the network name with the encrypted DNS
    server's identity that was learned via [DNR] or [DDR].  The type of

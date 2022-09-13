@@ -1037,12 +1037,12 @@ svg :is([stroke="fill"], [fill^="#fff"]) {
 <table class="ears">
 <thead><tr>
 <td class="left">Internet-Draft</td>
-<td class="center">Network connection using resolver</td>
+<td class="center">Resolver-based Network Identity Assertio</td>
 <td class="right">September 2022</td>
 </tr></thead>
 <tfoot><tr>
 <td class="left">Wing &amp; Reddy</td>
-<td class="center">Expires 12 March 2023</td>
+<td class="center">Expires 17 March 2023</td>
 <td class="right">[Page]</td>
 </tr></tfoot>
 </table>
@@ -1055,12 +1055,12 @@ svg :is([stroke="fill"], [fill^="#fff"]) {
 <dd class="internet-draft">draft-wing-opsawg-authenticating-network-latest</dd>
 <dt class="label-published">Published:</dt>
 <dd class="published">
-<time datetime="2022-09-08" class="published">8 September 2022</time>
+<time datetime="2022-09-13" class="published">13 September 2022</time>
     </dd>
 <dt class="label-intended-status">Intended Status:</dt>
 <dd class="intended-status">Informational</dd>
 <dt class="label-expires">Expires:</dt>
-<dd class="expires"><time datetime="2023-03-12">12 March 2023</time></dd>
+<dd class="expires"><time datetime="2023-03-17">17 March 2023</time></dd>
 <dt class="label-authors">Authors:</dt>
 <dd class="authors">
 <div class="author">
@@ -1110,7 +1110,7 @@ an attacker's capabilities if the attacker is emulating a wireless network.<a hr
         time. It is inappropriate to use Internet-Drafts as reference
         material or to cite them other than as "work in progress."<a href="#section-boilerplate.1-3" class="pilcrow">¶</a></p>
 <p id="section-boilerplate.1-4">
-        This Internet-Draft will expire on 12 March 2023.<a href="#section-boilerplate.1-4" class="pilcrow">¶</a></p>
+        This Internet-Draft will expire on 17 March 2023.<a href="#section-boilerplate.1-4" class="pilcrow">¶</a></p>
 </section>
 </div>
 <div id="copyright">
@@ -1189,13 +1189,12 @@ an attacker's capabilities if the attacker is emulating a wireless network.<a hr
 <p id="section-1-1">When a user connects to a wireless network the user
 or their device want to be sure the connection is to the expected
 network, as different networks provide different services in terms of
-performance, security, access to split-horizon DNS servers, and so on.  Although 802.1X provides layer 2
-security for both Ethernet and Wi-Fi networks, 802.1X is not widely deployed
-and unavailable on LTE and 5G networks -- and often applications are
+performance, security, access to split-horizon DNS servers, and so on.  Although 802.1X provides Layer 2
+security for both Ethernet and Wi-Fi networks, 802.1X is not widely deployed -- and often applications are
 unaware if the underlying network was protected with 802.1X.<a href="#section-1-1" class="pilcrow">¶</a></p>
 <p id="section-1-2">An attacker can operate a rogue WLAN access point
-with the same SSID and WPA-PSK as the victim network <span>[<a href="#Evil-Twin" class="xref">Evil-Twin</a>]</span>.  Also,
-there are many deployments (for example, coffee shops and bars) that offer free Wi-Fi
+with the same SSID and WPA-PSK as a victim's network <span>[<a href="#Evil-Twin" class="xref">Evil-Twin</a>]</span>.  Also,
+there are many deployments (for example, coffee shops and bars) that offer free Wi-Fi connectivity
 as a customer incentive.  Since these businesses are not
 Internet service providers, they are often unwilling and/or
 unqualified to perform advanced (sometimes, complex) configuration on their network.  In
@@ -1208,8 +1207,8 @@ PSK is used in a cryptographic handshake, defined in <span>[<a href="#IEEE802.11
 called the "4-way handshake" to prove knowledge of the PSK and derive
 traffic encryption keys for bulk wireless data. The same deployement
 technique is typically used in residential or small office/home office
-networks. If the PSK for wireless authentication is
-the same for all clients that connect to the same WLAN, the shared key
+networks. If the PSK for the wireless authentication is
+the same for all devices that connect to the same WLAN, the shared key
 will be available to all nodes, including attackers, so it is possible
 to mount an active on-path attack.<a href="#section-1-2" class="pilcrow">¶</a></p>
 <p id="section-1-3">This document describes how a wireless client can utilize
@@ -1248,7 +1247,7 @@ appear in all capitals, as shown here.<a href="#section-2-1" class="pilcrow">¶<
 <a href="#section-3" class="section-number selfRef">3. </a><a href="#name-theory-of-operation" class="section-name selfRef">Theory of Operation</a>
       </h2>
 <p id="section-3-1">A host connects to a network and obtains network-related information via DHCPv4, DHCPv6, or RA.
-The network indicates its encrypted DNS server using either <span>[<a href="#DNR" class="xref">DNR</a>]</span> or <span>[<a href="#DDR" class="xref">DDR</a>]</span>. If hosts supports an encrypted DNS scheme that is advertised by the network, the host then connects
+The network indicates its encrypted DNS server using either <span>[<a href="#DNR" class="xref">DNR</a>]</span> or <span>[<a href="#DDR" class="xref">DDR</a>]</span>. If the host supports an encrypted DNS scheme that is advertised by the network, the host then connects
 to at least one of the designated encrypted DNS servers, completes the TLS handshake, and performs public key validation of
 the presented certificate following conventional procedures.<a href="#section-3-1" class="pilcrow">¶</a></p>
 <p id="section-3-2">The host can associate the network name with the encrypted DNS server's
