@@ -232,14 +232,6 @@ identity if the network-designated resolver is hosted by the local network.
 However, it significantly reduces the attacker's capabilities if the attacker
 is emulating a network (that is, operating a look-alike network).
 
-A misbehaving node can mirror the legitimate DNS information of the expected
-network. That node won't be detected using the mechanism defined in this
-document. However, the misbehaving node won't access the content of the DNS
-traffic as it is ecnrypted. Still, the misbehaving node can perform other
-attacks once it is involved on-path (e.g. block DNS traffic to force a fall-back
-to Do53). The proposed mechanism does not provide additional benifits compared
-to simply configuring a trusted encrypted resolver.
-
 More and more content delivery networks, sensitive domains and
 endpoints are migrating to TLS 1.3 and ECH.  If the attacker's network
 conveys the same encrypted revolver's identity as the legitimate
