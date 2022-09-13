@@ -1,6 +1,6 @@
 {
   "magic": "E!vIA5L86J2I",
-  "timestamp": "2022-09-11T02:01:16.741819+00:00",
+  "timestamp": "2022-09-13T02:05:19.838936+00:00",
   "repo": "danwing/authenticating-network",
   "labels": [
     {
@@ -932,7 +932,7 @@
       "labels": [],
       "body": "",
       "createdAt": "2022-09-09T07:01:49Z",
-      "updatedAt": "2022-09-10T12:30:59Z",
+      "updatedAt": "2022-09-12T07:17:12Z",
       "baseRepository": "danwing/authenticating-network",
       "baseRefName": "main",
       "baseRefOid": "8ba8d09dffa627d1441196ced5bc3794e38a0981",
@@ -950,6 +950,13 @@
           "body": "\"The proposed mechanism does not provide additional benifits compared to simply configuring a trusted encrypted resolver.\"\r\n\r\nThe earlier part of the paragraph mentions Do53 fallback, then says it's same to use DoT/DoH to a public resolver (\"configured trusted encrypted resolver\").  \r\n\r\nI don't understand the logic of the new paragraph, especially its last sentence.",
           "createdAt": "2022-09-09T17:48:21Z",
           "updatedAt": "2022-09-09T17:48:21Z"
+        },
+        {
+          "author": "boucadair",
+          "authorAssociation": "CONTRIBUTOR",
+          "body": "> I don't understand the logic of the new paragraph, especially its last sentence.\r\n\r\nA user that simply configures a trusted encrypted DNS to be used when for a subset of networks it visits will have the same effect as the procedure for this specific attack: prevent the DNS traffic from being inspected/manipulated by an on-path device.  \r\n",
+          "createdAt": "2022-09-12T06:36:14Z",
+          "updatedAt": "2022-09-12T06:36:14Z"
         }
       ],
       "reviews": [
@@ -1005,6 +1012,86 @@
           "createdAt": "2022-09-10T12:30:22Z",
           "updatedAt": "2022-09-10T12:30:59Z",
           "comments": []
+        },
+        {
+          "id": "PRR_kwDOH2YLqc5BxraU",
+          "commit": {
+            "abbreviatedOid": "d8579f7"
+          },
+          "author": "boucadair",
+          "authorAssociation": "CONTRIBUTOR",
+          "state": "COMMENTED",
+          "body": "",
+          "createdAt": "2022-09-12T06:33:02Z",
+          "updatedAt": "2022-09-12T06:33:02Z",
+          "comments": [
+            {
+              "originalPosition": 51,
+              "body": "This is to let the emulating AP pass the checks from the client. ",
+              "createdAt": "2022-09-12T06:33:02Z",
+              "updatedAt": "2022-09-12T06:33:02Z"
+            }
+          ]
+        },
+        {
+          "id": "PRR_kwDOH2YLqc5BxslA",
+          "commit": {
+            "abbreviatedOid": "d8579f7"
+          },
+          "author": "boucadair",
+          "authorAssociation": "CONTRIBUTOR",
+          "state": "COMMENTED",
+          "body": "",
+          "createdAt": "2022-09-12T06:38:39Z",
+          "updatedAt": "2022-09-12T06:38:40Z",
+          "comments": [
+            {
+              "originalPosition": 56,
+              "body": "The point Tiru is that we don't know what is the exact behavior of the client when the connection to supplied encrypted DNS fails no what interaction the client will have with the user to simply get a connection up and ready for use.",
+              "createdAt": "2022-09-12T06:38:39Z",
+              "updatedAt": "2022-09-12T06:38:40Z"
+            }
+          ]
+        },
+        {
+          "id": "PRR_kwDOH2YLqc5Bx0Z1",
+          "commit": {
+            "abbreviatedOid": "d8579f7"
+          },
+          "author": "tireddy2",
+          "authorAssociation": "COLLABORATOR",
+          "state": "COMMENTED",
+          "body": "",
+          "createdAt": "2022-09-12T07:11:15Z",
+          "updatedAt": "2022-09-12T07:11:15Z",
+          "comments": [
+            {
+              "originalPosition": 51,
+              "body": "Got it but the attacker cannot analyze the encrypted DNS traffic and I don't see any benefit for a passive attacker.",
+              "createdAt": "2022-09-12T07:11:15Z",
+              "updatedAt": "2022-09-12T07:11:15Z"
+            }
+          ]
+        },
+        {
+          "id": "PRR_kwDOH2YLqc5Bx2CR",
+          "commit": {
+            "abbreviatedOid": "d8579f7"
+          },
+          "author": "tireddy2",
+          "authorAssociation": "COLLABORATOR",
+          "state": "COMMENTED",
+          "body": "",
+          "createdAt": "2022-09-12T07:17:12Z",
+          "updatedAt": "2022-09-12T07:17:12Z",
+          "comments": [
+            {
+              "originalPosition": 56,
+              "body": "I thought the client would advise the user to enable VPN or reach a trusted resolver (either directly or via proxy) and generate a clear warning not to use the WiFi network otherwise. I don't think an average user would override this warning (similar to the browser warning the user not to visit the site as it is phishing site). ",
+              "createdAt": "2022-09-12T07:17:12Z",
+              "updatedAt": "2022-09-12T07:17:13Z"
+            }
+          ]
         }
       ]
     },
@@ -1046,13 +1133,13 @@
       "labels": [],
       "body": "",
       "createdAt": "2022-09-10T12:40:28Z",
-      "updatedAt": "2022-09-10T12:40:28Z",
+      "updatedAt": "2022-09-11T05:39:31Z",
       "baseRepository": "danwing/authenticating-network",
       "baseRefName": "main",
       "baseRefOid": "8ba8d09dffa627d1441196ced5bc3794e38a0981",
       "headRepository": "danwing/authenticating-network",
       "headRefName": "tireddy2-patch-5",
-      "headRefOid": "408ecc3f9b5a36b3f98dc53a38020a653fbaff46",
+      "headRefOid": "2d4f5e95e45b4113839fc466090de50cf7386356",
       "closedAt": null,
       "mergedAt": null,
       "mergedBy": null,
