@@ -1,6 +1,6 @@
 ---
 title: "Asserting Wireless Network Connections Using DNS Revolvers' Identities"
-abbrev: "Resolver-based Network Identity Assertion"
+abbrev: "Resolver-based Network Identity"
 category: info
 
 docname: draft-wing-opsawg-authenticating-network-latest
