@@ -393,7 +393,7 @@ Authors' Addresses
 
    Dan Wing
    Citrix
-   Email: dwing-ietf@fuggles.com
+   Email: danwing@gmail.com
 
 
    Tirumaleswar Reddy
