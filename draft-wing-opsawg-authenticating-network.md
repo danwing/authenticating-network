@@ -174,7 +174,7 @@ If this is the first time the host connects to that encrypted DNS server, the ho
 which will authenticate and authorize that encrypted DNS server's identity.
 
 Better authentication can be performed by verifying the encrypted DNS
-server's certificate with the fingerprint provided in an extended Wi-Fi
+server's certificate with the identity provided in an extended Wi-Fi
 QR code ({{qr}}), consulting a crowd-sourced database, reputation
 system, or -- perhaps best -- using a matching SSID and SubjectAltName
 described in {{avoid-tofu}}.
@@ -242,7 +242,7 @@ indicates a different network than expected -- either a different
 network (that happens to also use the same SSID), change of the
 network's encrypted DNS server identity, or an Evil Twin
 attack. The host and/or the user can then take appropriate actions.
-Additionaly, in a mobile network, the UE can send the discovered encrypted resolver's
+Additionally, in a mobile network, the UE can send the discovered encrypted resolver's
 identity securely to the Mobile Core Network to assist it in identifying
 false base stations. It complements existing techniques [TR33.809] used to
 identify fake base stations.
@@ -312,19 +312,18 @@ own security risks, most signficant that an attacker can place their own QR code
 Several major smartphone operating systems support a QR code with the following format for the SSID "example" with WPA-PSK "password",
 
 ~~~
-WIFI:T:WPA;S:example;P:password;;
+  WIFI:T:WPA;S:example;P:password;;
 ~~~
 
-This could be extended to add a field containing the fingerprint of the encrypted DNS server's identity.
+This could be extended to add a field containing the identity of the encrypted DNS server.
 As several DNS servers can be included in the QR code with "D:", each DNS server with its own identity
 using [RFC8792] line folding,
 
 ~~~
 =============== NOTE: '\' line wrapping per RFC 8792 ================
 
-WIFI:T:WPA;S:example;P:password; \
-D:df81dfa6b61eafdffffe1a250240db5d2e6cee25, \
-D:28b236db27ff688f919b171e59e2fab81f9e4f2e;;
+  WIFI:T:WPA;S:example;P:password; \
+  D:ns1.example.net,D:ns.example.com;;
 ~~~
 
 
@@ -333,6 +332,7 @@ D:28b236db27ff688f919b171e59e2fab81f9e4f2e;;
 {:numbered="false"}
 
 This document was inspired by both Paul Wouters and Tommy Pauly during review of other documents.
+
 Thanks to Mohamed Boucadair for the review.
 
 
