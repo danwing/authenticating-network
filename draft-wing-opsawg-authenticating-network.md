@@ -31,7 +31,7 @@ author:
     ins: D. Wing
     fullname: Dan Wing
     organization: Citrix
-    email: "dwing-ietf@fuggles.com"
+    email: "danwing@gmail.com"
  -
     ins: T. Reddy
     fullname: Tirumaleswar Reddy
