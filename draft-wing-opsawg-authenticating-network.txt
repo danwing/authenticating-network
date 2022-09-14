@@ -29,7 +29,7 @@ About This Document
    authenticating-network/.
 
    Source for this draft and an issue tracker can be found at
-   https://github.com/danwing/authenticating-network.
+   https://github.com/danwing/danwing.github.io.
 
 Status of This Memo
 
