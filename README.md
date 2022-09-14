@@ -1,17 +1,17 @@
-# TODO - Your title
+# Asserting Wireless Network Connections Using DNS Revolvers' Identities
 
-This is the working area for the individual Internet-Draft, "Authenticating a Network Connection".
+This is the working area for the individual Internet-Draft, "Asserting Wireless Network Connections Using DNS Revolvers' Identities".
 
-* [Editor's Copy](https://danwing.github.io/authenticating-network/#go.draft-wing-authenticating-network.html)
-* [Datatracker Page](https://datatracker.ietf.org/doc/draft-wing-authenticating-network)
-* [Individual Draft](https://datatracker.ietf.org/doc/html/draft-wing-authenticating-network)
-* [Compare Editor's Copy to Individual Draft](https://danwing.github.io/authenticating-network/#go.draft-wing-authenticating-network.diff)
+* [Editor's Copy](https://danwing.github.io/authenticating-network/#go.draft-wing-opsawg-authenticating-network.html)
+* [Datatracker Page](https://datatracker.ietf.org/doc/draft-wing-opsawg-authenticating-network)
+* [Individual Draft](https://datatracker.ietf.org/doc/html/draft-wing-opsawg-authenticating-network)
+* [Compare Editor's Copy to Individual Draft](https://danwing.github.io/authenticating-network/#go.draft-wing-opsawg-authenticating-network.diff)
 
 
 ## Contributing
 
 See the
-[guidelines for contributions](https://github.com/danwing/authenticating-network/blob//CONTRIBUTING.md).
+[guidelines for contributions](https://github.com/danwing/authenticating-network/blob/main/CONTRIBUTING.md).
 
 Contributions can be made by creating pull requests.
 The GitHub interface supports creating pull requests using the Edit (✏) button.
