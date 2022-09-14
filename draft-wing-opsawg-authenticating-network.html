@@ -1274,7 +1274,7 @@ and the encrypted DNS server identity will be the encrypted DNS server's IP addr
 <p id="section-3-5">If this is the first time the host connects to that encrypted DNS server, the hosts follows <span>[<a href="#DNR" class="xref">DNR</a>]</span> or <span>[<a href="#DDR" class="xref">DDR</a>]</span> validation procedures,
 which will authenticate and authorize that encrypted DNS server's identity.<a href="#section-3-5" class="pilcrow">¶</a></p>
 <p id="section-3-6">Better authentication can be performed by verifying the encrypted DNS
-server's certificate with the fingerprint provided in an extended Wi-Fi
+server's certificate with the identity provided in an extended Wi-Fi
 QR code (<a href="#qr" class="xref">Appendix A</a>), consulting a crowd-sourced database, reputation
 system, or -- perhaps best -- using a matching SSID and SubjectAltName
 described in <a href="#avoid-tofu" class="xref">Section 4</a>.<a href="#section-3-6" class="pilcrow">¶</a></p>
@@ -1349,7 +1349,7 @@ indicates a different network than expected -- either a different
 network (that happens to also use the same SSID), change of the
 network's encrypted DNS server identity, or an Evil Twin
 attack. The host and/or the user can then take appropriate actions.
-Additionaly, in a mobile network, the UE can send the discovered encrypted resolver's
+Additionally, in a mobile network, the UE can send the discovered encrypted resolver's
 identity securely to the Mobile Core Network to assist it in identifying
 false base stations. It complements existing techniques <span>[<a href="#TR33.809" class="xref">TR33.809</a>]</span> used to
 identify fake base stations.<a href="#section-3-12" class="pilcrow">¶</a></p>
@@ -1487,19 +1487,18 @@ own security risks, most signficant that an attacker can place their own QR code
 <p id="appendix-A-3">Several major smartphone operating systems support a QR code with the following format for the SSID "example" with WPA-PSK "password",<a href="#appendix-A-3" class="pilcrow">¶</a></p>
 <div class="alignLeft art-text artwork" id="appendix-A-4">
 <pre>
-WIFI:T:WPA;S:example;P:password;;
+  WIFI:T:WPA;S:example;P:password;;
 </pre><a href="#appendix-A-4" class="pilcrow">¶</a>
 </div>
-<p id="appendix-A-5">This could be extended to add a field containing the fingerprint of the encrypted DNS server's identity.
+<p id="appendix-A-5">This could be extended to add a field containing the identity of the encrypted DNS server.
 As several DNS servers can be included in the QR code with "D:", each DNS server with its own identity
 using <span>[<a href="#RFC8792" class="xref">RFC8792</a>]</span> line folding,<a href="#appendix-A-5" class="pilcrow">¶</a></p>
 <div class="alignLeft art-text artwork" id="appendix-A-6">
 <pre>
 =============== NOTE: '\' line wrapping per RFC 8792 ================
 
-WIFI:T:WPA;S:example;P:password; \
-D:df81dfa6b61eafdffffe1a250240db5d2e6cee25, \
-D:28b236db27ff688f919b171e59e2fab81f9e4f2e;;
+  WIFI:T:WPA;S:example;P:password; \
+  D:ns1.example.net,D:ns.example.com;;
 </pre><a href="#appendix-A-6" class="pilcrow">¶</a>
 </div>
 </section>
@@ -1509,8 +1508,8 @@ D:28b236db27ff688f919b171e59e2fab81f9e4f2e;;
       <h2 id="name-acknowledgments">
 <a href="#name-acknowledgments" class="section-name selfRef">Acknowledgments</a>
       </h2>
-<p id="appendix-B-1">This document was inspired by both Paul Wouters and Tommy Pauly during review of other documents.
-Thanks to Mohamed Boucadair for the review.<a href="#appendix-B-1" class="pilcrow">¶</a></p>
+<p id="appendix-B-1">This document was inspired by both Paul Wouters and Tommy Pauly during review of other documents.<a href="#appendix-B-1" class="pilcrow">¶</a></p>
+<p id="appendix-B-2">Thanks to Mohamed Boucadair for the review.<a href="#appendix-B-2" class="pilcrow">¶</a></p>
 </section>
 </div>
 <div id="authors-addresses">
