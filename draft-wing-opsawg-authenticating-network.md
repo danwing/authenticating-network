@@ -16,10 +16,10 @@ keyword:
  - network
  - security
 venue:
-#  group: WG
+#  group: opsawg
 #  type: Working Group
-#  mail: WG@example.com
-#  arch: https://example.com/WG
+#  mail: opsawg@ietf.org
+#  arch: https://mailarchive.ietf.org/arch/browse/opsawg/
   github: "danwing/authenticating-network"
   latest: "https://danwing.github.io/authenticating-network/draft-wing-authenticating-network.html"
 
