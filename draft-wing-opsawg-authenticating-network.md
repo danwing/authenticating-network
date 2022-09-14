@@ -9,12 +9,13 @@ number:
 date:
 consensus: true
 v: 3
-# area: AREA
-area: "ops"
+# area: OPS
+
 workgroup: "Operations and Management Area Working Group"
 keyword:
  - network
  - security
+
 venue:
 #  group: opsawg
 #  type: Working Group
