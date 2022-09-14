@@ -18,6 +18,23 @@ Abstract
    identity to reduce an attacker's capabilities if the attacker is
    emulating a wireless network.
 
+About This Document
+
+   This note is to be removed before publishing as an RFC.
+
+   The latest revision of this draft can be found at
+   https://example.com/LATEST.  Status information for this document may
+   be found at https://datatracker.ietf.org/doc/draft-wing-opsawg-
+   authenticating-network/.
+
+   Discussion of this document takes place on the OPSAWG Working Group
+   mailing list (mailto:opsawg@ietf.org), which is archived at
+   https://mailarchive.ietf.org/arch/browse/opsawg/.  Subscribe at
+   https://www.ietf.org/mailman/listinfo/opsawg/.
+
+   Source for this draft and an issue tracker can be found at
+   https://github.com/danwing/authenticating-network.
+
 Status of This Memo
 
    This Internet-Draft is submitted in full conformance with the
