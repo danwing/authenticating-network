@@ -65,6 +65,16 @@ informative:
        -
          name: Wikipedia
 
+
+  TR33.809:
+    title: "Study on 5G Security Enhancement against False Base Stations"
+    date: 2022-06
+    target: "https://portal.3gpp.org/desktopmodules/Specifications/SpecificationDetails.aspx?specificationId=3539"
+    author:
+      -
+        name: 3GPP
+
+
   RFC8792: RFC8792
   RFC8110: RFC8110
   RFC7839: RFC7839
@@ -232,6 +242,11 @@ indicates a different network than expected -- either a different
 network (that happens to also use the same SSID), change of the
 network's encrypted DNS server identity, or an Evil Twin
 attack. The host and/or the user can then take appropriate actions.
+Additionaly, in a mobile network, the UE can send the discovered encrypted resolver's
+identity securely to the Mobile Core Network to assist it in identifying
+false base stations. It complements existing techniques [TR33.809] used to
+identify fake base stations.
+
 
 # Avoiding Trust on First Use {#avoid-tofu}
 
@@ -318,5 +333,6 @@ D:28b236db27ff688f919b171e59e2fab81f9e4f2e;;
 {:numbered="false"}
 
 This document was inspired by both Paul Wouters and Tommy Pauly during review of other documents.
+Thanks to Mohamed Boucadair for the review.
 
 
