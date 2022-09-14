@@ -1348,7 +1348,11 @@ re-connection.  If the encrypted DNS server's identity differs, this
 indicates a different network than expected -- either a different
 network (that happens to also use the same SSID), change of the
 network's encrypted DNS server identity, or an Evil Twin
-attack. The host and/or the user can then take appropriate actions.<a href="#section-3-12" class="pilcrow">¶</a></p>
+attack. The host and/or the user can then take appropriate actions.
+Additionaly, in a mobile network, the UE can send the discovered encrypted resolver's
+identity securely to the Mobile Core Network to assist it in identifying
+false base stations. It complements existing techniques <span>[<a href="#TR33.809" class="xref">TR33.809</a>]</span> used to
+identify fake base stations.<a href="#section-3-12" class="pilcrow">¶</a></p>
 </section>
 </div>
 <div id="avoid-tofu">
@@ -1462,8 +1466,12 @@ use a key identifier.<a href="#section-5-4" class="pilcrow">¶</a></p>
 <span class="refAuthor">Harkins, D., Ed.</span> and <span class="refAuthor">W. Kumari, Ed.</span>, <span class="refTitle">"Opportunistic Wireless Encryption"</span>, <span class="seriesInfo">RFC 8110</span>, <span class="seriesInfo">DOI 10.17487/RFC8110</span>, <time datetime="2017-03" class="refDate">March 2017</time>, <span>&lt;<a href="https://www.rfc-editor.org/rfc/rfc8110">https://www.rfc-editor.org/rfc/rfc8110</a>&gt;</span>. </dd>
 <dd class="break"></dd>
 <dt id="RFC8792">[RFC8792]</dt>
-      <dd>
+        <dd>
 <span class="refAuthor">Watsen, K.</span>, <span class="refAuthor">Auerswald, E.</span>, <span class="refAuthor">Farrel, A.</span>, and <span class="refAuthor">Q. Wu</span>, <span class="refTitle">"Handling Long Lines in Content of Internet-Drafts and RFCs"</span>, <span class="seriesInfo">RFC 8792</span>, <span class="seriesInfo">DOI 10.17487/RFC8792</span>, <time datetime="2020-06" class="refDate">June 2020</time>, <span>&lt;<a href="https://www.rfc-editor.org/rfc/rfc8792">https://www.rfc-editor.org/rfc/rfc8792</a>&gt;</span>. </dd>
+<dd class="break"></dd>
+<dt id="TR33.809">[TR33.809]</dt>
+      <dd>
+<span class="refAuthor">3GPP</span>, <span class="refTitle">"Study on 5G Security Enhancement against False Base Stations"</span>, <time datetime="2022-06" class="refDate">June 2022</time>, <span>&lt;<a href="https://portal.3gpp.org/desktopmodules/Specifications/SpecificationDetails.aspx?specificationId=3539">https://portal.3gpp.org/desktopmodules/Specifications/SpecificationDetails.aspx?specificationId=3539</a>&gt;</span>. </dd>
 <dd class="break"></dd>
 </dl>
 </section>
@@ -1501,7 +1509,8 @@ D:28b236db27ff688f919b171e59e2fab81f9e4f2e;;
       <h2 id="name-acknowledgments">
 <a href="#name-acknowledgments" class="section-name selfRef">Acknowledgments</a>
       </h2>
-<p id="appendix-B-1">This document was inspired by both Paul Wouters and Tommy Pauly during review of other documents.<a href="#appendix-B-1" class="pilcrow">¶</a></p>
+<p id="appendix-B-1">This document was inspired by both Paul Wouters and Tommy Pauly during review of other documents.
+Thanks to Mohamed Boucadair for the review.<a href="#appendix-B-1" class="pilcrow">¶</a></p>
 </section>
 </div>
 <div id="authors-addresses">

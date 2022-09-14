@@ -253,6 +253,10 @@ Table of Contents
    different network (that happens to also use the same SSID), change of
    the network's encrypted DNS server identity, or an Evil Twin attack.
    The host and/or the user can then take appropriate actions.
+   Additionaly, in a mobile network, the UE can send the discovered
+   encrypted resolver's identity securely to the Mobile Core Network to
+   assist it in identifying false base stations.  It complements
+   existing techniques [TR33.809] used to identify fake base stations.
 
 4.  Avoiding Trust on First Use
 
@@ -364,6 +368,11 @@ Table of Contents
               RFCs", RFC 8792, DOI 10.17487/RFC8792, June 2020,
               <https://www.rfc-editor.org/rfc/rfc8792>.
 
+   [TR33.809] 3GPP, "Study on 5G Security Enhancement against False Base
+              Stations", June 2022,
+              <https://portal.3gpp.org/desktopmodules/Specifications/
+              SpecificationDetails.aspx?specificationId=3539>.
+
 Appendix A.  Extending WiFi QR Code
 
    This section is non-normative and merely explains how extending the
@@ -391,7 +400,8 @@ Appendix A.  Extending WiFi QR Code
 Acknowledgments
 
    This document was inspired by both Paul Wouters and Tommy Pauly
-   during review of other documents.
+   during review of other documents.  Thanks to Mohamed Boucadair for
+   the review.
 
 Authors' Addresses
 
