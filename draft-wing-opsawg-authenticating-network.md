@@ -1,6 +1,6 @@
 ---
 title: "Asserting Wireless Network Connections Using DNS Revolvers' Identities"
-abbrev: "Resolver-based Network Identity Assertion"
+abbrev: "Resolver-based Network Identity"
 category: info
 
 docname: draft-wing-opsawg-authenticating-network-latest
@@ -16,10 +16,10 @@ keyword:
  - network
  - security
 venue:
-#  group: WG
+#  group: opsawg
 #  type: Working Group
-#  mail: WG@example.com
-#  arch: https://example.com/WG
+#  mail: opsawg@ietf.org
+#  arch: https://mailarchive.ietf.org/arch/browse/opsawg/
   github: "danwing/authenticating-network"
   latest: "https://danwing.github.io/authenticating-network/draft-wing-authenticating-network.html"
 
