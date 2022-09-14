@@ -2,7 +2,8 @@
 
 This is the working area for the individual Internet-Draft, "Asserting Wireless Network Connections Using DNS Revolvers' Identities".
 
-* [Editor's Copy](https://danwing.github.io/authenticating-network/#go.draft-wing-opsawg-authenticating-network.html)
+<!-- * [Editor's Copy](https://danwing.github.io/authenticating-network/#go.draft-wing-opsawg-authenticating-network.html) -->
+* [Editor's Copy](https://danwing.github.io/authenticating-network/draft-wing-opsawg-authenticating-network.html) 
 * [Datatracker Page](https://datatracker.ietf.org/doc/draft-wing-opsawg-authenticating-network)
 * [Individual Draft](https://datatracker.ietf.org/doc/html/draft-wing-opsawg-authenticating-network)
 * [Compare Editor's Copy to Individual Draft](https://danwing.github.io/authenticating-network/#go.draft-wing-opsawg-authenticating-network.diff)
