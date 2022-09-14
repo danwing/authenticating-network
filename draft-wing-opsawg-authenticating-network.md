@@ -17,6 +17,15 @@ keyword:
  - security
 
 
+venue:
+  group: OPSAWG
+  type: Working Group
+  mail: opsawg@ietf.org
+  arch: https://mailarchive.ietf.org/arch/browse/opsawg/
+  github: danwing/authenticating-network
+  latest: https://example.com/LATEST
+
+
 
 
 
