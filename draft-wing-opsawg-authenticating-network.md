@@ -80,7 +80,7 @@ informative:
     target: "https://nvlpubs.nist.gov/nistpubs/SpecialPublications/NIST.SP.800-187.pdf"
     author:
       -
-        name: 3GPP
+        name: NIST
 
 
   RFC8792: RFC8792
