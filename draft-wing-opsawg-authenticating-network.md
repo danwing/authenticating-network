@@ -74,6 +74,14 @@ informative:
       -
         name: 3GPP
 
+  NIST.SP.800-187:
+    title: "Guide to LTE Security"
+    date: 2017-12
+    target: "https://nvlpubs.nist.gov/nistpubs/SpecialPublications/NIST.SP.800-187.pdf"
+    author:
+      -
+        name: 3GPP
+
 
   RFC8792: RFC8792
   RFC8110: RFC8110
@@ -244,8 +252,8 @@ network's encrypted DNS server identity, or an Evil Twin
 attack. The host and/or the user can then take appropriate actions.
 Additionally, in a mobile network, the UE can send the discovered encrypted resolver's
 identity securely to the Mobile Core Network to assist it in identifying
-false base stations. It complements existing techniques [TR33.809] used to
-identify fake base stations.
+compromised base stations [NIST.SP.800-187]. It complements existing techniques 
+[TR33.809] used to identify fake base stations.
 
 
 # Avoiding Trust on First Use {#avoid-tofu}
