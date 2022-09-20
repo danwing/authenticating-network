@@ -252,7 +252,7 @@ network's encrypted DNS server identity, or an Evil Twin
 attack. The host and/or the user can then take appropriate actions.
 Additionally, in a mobile network, the UE can send the discovered encrypted resolver's
 identity securely to the Mobile Core Network to assist it in identifying
-compromised base stations [NIST.SP.800-187]. It complements existing techniques 
+compromised base stations [NIST.SP.800-187]. It complements existing techniques
 [TR33.809] used to identify fake base stations.
 
 
