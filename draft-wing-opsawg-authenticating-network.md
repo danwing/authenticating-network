@@ -148,9 +148,6 @@ The document assumes that the host supports at least one encrypted DNS scheme (e
 
 The current version of the specification focuses on wirless networks. The applicability to other network types may be assessed in future versions.
 
-# Conventions and Definitions
-
-{::boilerplate bcp14-tagged}
 
 
 # Theory of Operation
