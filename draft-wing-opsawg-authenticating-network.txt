@@ -5,8 +5,8 @@
 Operations and Management Area Working Group                     D. Wing
 Internet-Draft                                                    Citrix
 Intended status: Informational                                  T. Reddy
-Expires: 18 March 2023                                             Nokia
-                                                       14 September 2022
+Expires: 26 March 2023                                             Nokia
+                                                       22 September 2022
 
 
  Asserting Wireless Network Connections Using DNS Revolvers' Identities
@@ -50,7 +50,7 @@ Status of This Memo
    time.  It is inappropriate to use Internet-Drafts as reference
    material or to cite them other than as "work in progress."
 
-   This Internet-Draft will expire on 18 March 2023.
+   This Internet-Draft will expire on 26 March 2023.
 
 Copyright Notice
 
@@ -255,8 +255,9 @@ Table of Contents
    The host and/or the user can then take appropriate actions.
    Additionally, in a mobile network, the UE can send the discovered
    encrypted resolver's identity securely to the Mobile Core Network to
-   assist it in identifying false base stations.  It complements
-   existing techniques [TR33.809] used to identify fake base stations.
+   assist it in identifying compromised base stations [NIST.SP.800-187].
+   It complements existing techniques [TR33.809] used to identify fake
+   base stations.
 
 4.  Avoiding Trust on First Use
 
@@ -353,6 +354,11 @@ Table of Contents
    [IEEE802.11]
               Wikipedia, "IEEE802.11", August 2022,
               <https://en.wikipedia.org/wiki/IEEE_802.11>.
+
+   [NIST.SP.800-187]
+              NIST, "Guide to LTE Security", December 2017,
+              <https://nvlpubs.nist.gov/nistpubs/SpecialPublications/
+              NIST.SP.800-187.pdf>.
 
    [RFC7839]  Bhandari, S., Gundavelli, S., Grayson, M., Volz, B., and
               J. Korhonen, "Access-Network-Identifier Option in DHCP",
