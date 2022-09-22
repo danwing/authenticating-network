@@ -69,14 +69,13 @@ Copyright Notice
 Table of Contents
 
    1.  Introduction
-   2.  Conventions and Definitions
-   3.  Theory of Operation
-   4.  Avoiding Trust on First Use
-   5.  Security Considerations
-   6.  IANA Considerations
-   7.  References
-     7.1.  Normative References
-     7.2.  Informative References
+   2.  Theory of Operation
+   3.  Avoiding Trust on First Use
+   4.  Security Considerations
+   5.  IANA Considerations
+   6.  References
+     6.1.  Normative References
+     6.2.  Informative References
    Appendix A.  Extending WiFi QR Code
    Acknowledgments
    Authors' Addresses
@@ -139,15 +138,7 @@ Table of Contents
    The applicability to other network types may be assessed in future
    versions.
 
-2.  Conventions and Definitions
-
-   The key words "MUST", "MUST NOT", "REQUIRED", "SHALL", "SHALL NOT",
-   "SHOULD", "SHOULD NOT", "RECOMMENDED", "NOT RECOMMENDED", "MAY", and
-   "OPTIONAL" in this document are to be interpreted as described in
-   BCP 14 [RFC2119] [RFC8174] when, and only when, they appear in all
-   capitals, as shown here.
-
-3.  Theory of Operation
+2.  Theory of Operation
 
    A host connects to a network and obtains network-related information
    via DHCPv4, DHCPv6, or RA.  The network indicates its encrypted DNS
@@ -191,7 +182,7 @@ Table of Contents
    server's certificate with the identity provided in an extended Wi-Fi
    QR code (Appendix A), consulting a crowd-sourced database, reputation
    system, or -- perhaps best -- using a matching SSID and
-   SubjectAltName described in Section 4.
+   SubjectAltName described in Section 3.
 
    After this step, the relationship of SSID, PSK, encrypted resolver
    discovery mechanism, and SubjectAltName are stored on the host.
@@ -259,7 +250,7 @@ Table of Contents
    It complements existing techniques [TR33.809] used to identify fake
    base stations.
 
-4.  Avoiding Trust on First Use
+3.  Avoiding Trust on First Use
 
    Trust on First Use can be avoided if the SSID name and DNS server's
    Subject Alt Name match.  Unfortunately such a constraint disallows
@@ -274,7 +265,7 @@ Table of Contents
    name or address (e.g., Public WiFi hotspots; 123-Main-
    Street.example.com, coffee-bar.example.com).
 
-5.  Security Considerations
+4.  Security Considerations
 
    The network-designated resolver may or may not be local to the
    network.  DDR is useful in deployments where the local network cannot
@@ -306,13 +297,13 @@ Table of Contents
    mechanism described in this document; rather, an implementation can
    use a key identifier.
 
-6.  IANA Considerations
+5.  IANA Considerations
 
    This document has no IANA actions.
 
-7.  References
+6.  References
 
-7.1.  Normative References
+6.1.  Normative References
 
    [DDR]      Pauly, T., Kinnear, E., Wood, C. A., McManus, P., and T.
               Jensen, "Discovery of Designated Resolvers", Work in
@@ -327,16 +318,7 @@ Table of Contents
               2022, <https://datatracker.ietf.org/doc/html/draft-ietf-
               add-dnr-13>.
 
-   [RFC2119]  Bradner, S., "Key words for use in RFCs to Indicate
-              Requirement Levels", BCP 14, RFC 2119,
-              DOI 10.17487/RFC2119, March 1997,
-              <https://www.rfc-editor.org/rfc/rfc2119>.
-
-   [RFC8174]  Leiba, B., "Ambiguity of Uppercase vs Lowercase in RFC
-              2119 Key Words", BCP 14, RFC 8174, DOI 10.17487/RFC8174,
-              May 2017, <https://www.rfc-editor.org/rfc/rfc8174>.
-
-7.2.  Informative References
+6.2.  Informative References
 
    [AKA]      Arkko, J., Norrman, K., Torvinen, V., and J. Mattsson,
               "Forward Secrecy for the Extensible Authentication
