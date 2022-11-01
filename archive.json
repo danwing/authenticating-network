@@ -1,6 +1,6 @@
 {
   "magic": "E!vIA5L86J2I",
-  "timestamp": "2022-09-22T02:00:24.383486+00:00",
+  "timestamp": "2022-11-01T02:06:00.723156+00:00",
   "repo": "danwing/authenticating-network",
   "labels": [
     {
@@ -1558,6 +1558,32 @@
       "mergeCommit": {
         "oid": "d3743a55307613f89508a8de8acd0f60a5184a21"
       },
+      "comments": [],
+      "reviews": []
+    },
+    {
+      "number": 37,
+      "id": "PR_kwDOH2YLqc5B0fXf",
+      "title": "Address comments related to use of EAP TLS",
+      "url": "https://github.com/danwing/authenticating-network/pull/37",
+      "state": "OPEN",
+      "author": "tireddy2",
+      "authorAssociation": "COLLABORATOR",
+      "assignees": [],
+      "labels": [],
+      "body": "",
+      "createdAt": "2022-10-30T05:30:05Z",
+      "updatedAt": "2022-10-30T05:30:05Z",
+      "baseRepository": "danwing/authenticating-network",
+      "baseRefName": "main",
+      "baseRefOid": "d3743a55307613f89508a8de8acd0f60a5184a21",
+      "headRepository": "danwing/authenticating-network",
+      "headRefName": "tireddy2-patch-7",
+      "headRefOid": "4d847369dc9bab018e37666829a131697cdd1a7e",
+      "closedAt": null,
+      "mergedAt": null,
+      "mergedBy": null,
+      "mergeCommit": null,
       "comments": [],
       "reviews": []
     }
