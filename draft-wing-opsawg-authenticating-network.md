@@ -81,11 +81,25 @@ informative:
     author:
       -
         name: NIST
+  
+    OTA:
+    title: "Over-the-Air Profile Delivery Concepts"
+    date: 2018-04
+    target: "https://developer.apple.com/library/archive/documentation/NetworkingInternet/Conceptual/iPhoneOTAConfiguration/OTASecurity/OTASecurity.html"
+    author:
+      -
+        name: OTA
 
 
   RFC8792: RFC8792
   RFC8110: RFC8110
   RFC7839: RFC7839
+  RFC3748: RFC3748
+  RFC5216: RFC5216
+  RFC4851: RFC4851
+  RFC5281: RFC5281
+  RFC7170: RFC7170
+  RFC9190: RFC9190
   AKA:    I-D.ietf-emu-aka-pfs
 
 --- abstract
@@ -267,6 +281,29 @@ safely be disclosed to neighbors.  Such attacks are not a concern in
 deployments where the network name purposefully includes the business
 name or address (e.g., Public WiFi hotspots;
 123-Main-Street.example.com, coffee-bar.example.com).
+
+The Extensible Authentication Protocol (EAP), defined in [RFC3748],
+provides a standard mechanism for support of multiple authentication
+methods.  EAP-TLS [RFC5216] specifies an EAP authentication method
+with certificate-based mutual authentication utilizing the TLS
+handshake protocol for cryptographic algorithms and protocol version
+negotiation and establishment of shared secret keying material. 
+Many other EAP methods such as Flexible Authentication via Secure Tunneling (EAP-
+FAST) [RFC4851], Tunneled Transport Layer Security (EAP-TTLS)
+[RFC5281], the Tunnel Extensible Authentication Protocol (TEAP)
+[RFC7170], as well as vendor-specific EAP methods such as the
+Protected Extensible Authentication Protocol (PEAP) [PEAP], depend on
+TLS and EAP-TLS. In networks that use the EAP-TLS method or an EAP method 
+that depends on TLS, if the SSID name matches one of the subjectAltName entries 
+in the EAP-TLS server certificate, Trust on First Use can be avoided. 
+It is especially useful in deployments where the endpoint is
+not managed using an MDM. For instance, it can be used during the
+device registration process (e.g., using Over-The-Air (OTA) enrollment [OTA] to 
+provision the device with a certificate and configuration profile) or 
+in networks (e.g., emergency services as discussed in Section 2.1.5 of [RFC9190]) 
+where client authentication is not required or in networks that use
+password to authorize the client to access the network (e.g., using password 
+authenticated key exchange with TLS).
 
 
 # Security Considerations
